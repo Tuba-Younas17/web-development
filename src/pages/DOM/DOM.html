@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>DOM Manipulation</title>
   </head>
-  <body class="min-h-screen ">
+  <body class="min-h-screen">
     <nav class="flex items-center bg-zinc-400 px-28 py-5">
       <img src="/assets/images/logo.png " class="w-40 cursor-pointer" alt="" />
       <ul class="flex-1 text-center">
@@ -42,17 +42,21 @@
       <img src="/assets/images/cart.png" class="w-8 cursor-pointer" alt="" />
     </nav>
     
-      <div class="flex gap-4 m-4">
-        <div
-          id="box1"
-          class="w-40 h-40 bg-red-500 flex items-center justify-center text-white text-lg font-bold shadow-lg rounded-lg"
-        >
-        </div>
-      </div>
-   
+    <div
+      id="courses-container"
+      class="inline-block m-6 p-6 border bg-slate-400 text-black"
+    ></div>
 
+    <div class="flex gap-4 m-4">
+      <div
+        id="box1"
+        class="w-40 h-40 bg-red-500 flex items-center justify-center text-white text-lg font-bold shadow-lg rounded-lg"
+      ></div>
+    </div>
     <div id="appendElement" class="py-8 px-8">
       <h1>DOM Manipulation</h1>
     </div>
+
+    
   </body>
 </html>
