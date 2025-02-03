@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./Deals.js"></script>
+    <script type="module" src="/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>DOM Manipulation</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <nav class="flex items-center bg-slate-400 px-28 py-5">
+        <img src="/assets/images/logo.png" class="w-40 cursor-pointer" alt="" />
+        <ul class="flex-1 text-center">
+            <li class="list-none inline-block px-5">
+                <a href="/index.html" class="no-underline text-white px-2">Home</a>
+            </li>
+            <li class="list-none inline-block px-5">
+                <a href="/src/pages/about.html" class="no-underline text-white px-2">About</a>
+            </li>
+            <li class="list-none inline-block px-5">
+                <a href="/src/pages/features.html" class="no-underline text-white px-2">Features</a>
+            </li>
+            <li class="list-none inline-block px-5">
+                <a href="/src/pages/Game/Game.html" class="no-underline text-white px-2">Game</a>
+            </li>
+            <li class="list-none inline-block px-5">
+                <a href="/Deals.html" class="no-underline text-white px-2">Deals</a>
+            </li>
+        </ul>
+        <img src="/assets/images/cart.png" class="w-8 cursor-pointer" alt="" />
+        <p id ="count" class="text-red-100 ">0</p>
+    </nav>
+    
+
+    <div class="flex-1">
+        <h1 class="text-4xl font-bold text-black text-center mt-4">Discounted Deals</h1>
+        <div id="deals-container" class="flex justify-around flex-wrap m-6 p-6 border rounded-md bg-slate-400 text-black"></div>
+
+        <h1 class="text-4xl font-bold text-black text-center mt-4">Exclusive Deals</h1>
+        <div id="showroom-container" class="flex justify-around flex-wrap m-6 p-6 border rounded-md bg-slate-400 text-black"></div>
+    </div>
+    <div class="p-8 bg-indigo-100 rounded-md mt-16">
+        <h2 class="text-3xl font-bold mb-6 text-red-600">Top Sellers</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Product Card -->
+          <div
+            class="bg-white border rounded-lg shadow-lg p-4 transform transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="/assets/images/anaajatta.jpeg"
+              alt="Product"
+              class="h-40 w-full object-cover rounded-md mb-4"
+            />
+            <h3 class="text-lg font-bold">Anaaj Yousaf Chakki Atta</h3>
+            <p class="text-sm text-gray-500">5 kg</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-lg font-bold text-gray-800">Rs. 675</span>
+              <span class="text-sm line-through text-gray-400">Rs. 750</span>
+            </div>
+            <span
+              class="text-sm font-semibold text-white bg-red-500 rounded-full px-2 py-1 mt-2 inline-block"
+              >10% OFF</span
+            >
+            <button
+             
+              class="btn w-full mt-4 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-800 transition-colors"
+            >
+           
+              Add to Cart
+            </button>
+          </div>
+
+          <div
+            class="bg-white border rounded-lg shadow-lg p-4 transform transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="/assets/images/oil.webp"
+              alt="Product"
+              class="h-40 w-full object-cover rounded-md mb-4"
+            />
+            <h3 class="text-lg font-bold">Kausar Cooking Oil 1 Litre</h3>
+            <p class="text-sm text-gray-500">1 Litre</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-lg font-bold text-gray-800">Rs. 555</span>
+              <span class="text-sm line-through text-gray-400">Rs. 600</span>
+            </div>
+            <span
+              class="text-sm font-semibold text-white bg-red-500 rounded-full px-2 py-1 mt-2 inline-block"
+              >7.5% OFF</span
+            >
+            <button
+            
+              class="btn w-full mt-4 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            >
+              Add to Cart
+            </button>
+          </div>
+
+          <div
+            class="bg-white border rounded-lg shadow-lg p-4 transform transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="/assets/images/Nurpur.webp"
+              alt="Product"
+              class="h-40 w-full object-cover rounded-md mb-4"
+            />
+            <h3 class="text-lg font-bold">Nurpur Full Cream Milk Pouch</h3>
+            <p class="text-sm text-gray-500">250 ml</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-lg font-bold text-gray-800">Rs. 105</span>
+              <span class="text-sm line-through text-gray-400">Rs. 114</span>
+            </div>
+            <span
+              class="text-sm font-semibold text-white bg-red-500 rounded-full px-2 py-1 mt-2 inline-block"
+              >7.5% OFF</span
+            >
+            <button
+            
+              class="btn w-full mt-4 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div
+            class="bg-white border rounded-lg shadow-lg p-4 transform transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="/assets/images/chilgooza.jpg"
+              alt="Product"
+              class="h-40 w-full object-cover rounded-md mb-4"
+            />
+            <h3 class="text-lg font-bold">Brown Chilgooza Pine Nuts</h3>
+            <p class="text-sm text-gray-500">1 Kg</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-lg font-bold text-gray-800">Rs. 5400</span>
+              <span class="text-sm line-through text-gray-400">Rs. 6000</span>
+            </div>
+            <span
+              class="text-sm font-semibold text-white bg-red-500 rounded-full px-2 py-1 mt-2 inline-block"
+              >10% OFF</span
+            >
+            <button
+           
+              class="btn w-full mt-4 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    <footer class="bg-yellow-300 text-white py-6 w-full text-center">
+        <p>&copy; 2025 Grocery Store. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

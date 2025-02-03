@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./Dictionary.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
+      integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Dictionary</title>
+  </head>
+  <body class="bg-orange-500 flex items-center justify-center min-h-screen">
+    <audio id="sound"></audio>
+    <div
+      class="bg-white font-black flex flex-col justify-start p-8 rounded-lg shadow-lg h-auto max-w-md"
+    >
+      <div class="text-center mb-6">
+        <input
+          type="text"
+          id="input-word"
+          placeholder="Search for a word"
+          class="p-3 w-full text-black border-b-2 border-gray-400 rounded-md"
+        />
+        <button
+          id="inputbtn"
+          class="mt-4 p-2 w-20 text-black border-2 border-gray-400 rounded-md"
+        >
+          Search
+        </button>
+      </div>
+
+      <div id="word-info" class="mt-6"></div>
+    </div>
+  </body>
+</html>
