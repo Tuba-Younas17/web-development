@@ -1,5 +1,6 @@
-import { fun1 } from '../utils/functions.js';
-import { fun2 } from '../utils/functions.js';
+
+import { descriptionOfDiscountedDeals } from '../utils/dealsfunctions/descriptionOfDiscountedDeals.js';
+import {descriptionOfExclusiveDeals } from '../utils/dealsfunctions/descriptionofexclusivedeals.js';
 
 
 
@@ -57,7 +58,7 @@ for (let key in dealsData) {
 
     let isExpanded = false;
     dealDiv.addEventListener("click", function () {
-        isExpanded= fun1(deal, dealDiv, isExpanded); // Use the imported function
+        isExpanded= descriptionOfDiscountedDeals(deal, dealDiv, isExpanded); 
     });
 }
 const showroomContainer = document.querySelector("#showroom-container");
@@ -94,7 +95,7 @@ for(let items in showroomData){
     div.appendChild(h1);
     let isExpanded=false;
     div.addEventListener("click", function(){
-        isExpanded=fun2(item, div, isExpanded); // Use the imported function
+        isExpanded=descriptionOfExclusiveDeals(item, div, isExpanded);
 
 })
 }
