@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
+      integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
+   
+    <script type="module" src="weather.js"></script>
+    
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-200">
+  <nav class="flex items-center px-28 py-5 bg-indigo-500 top-0 fixed w-full">
+    <img
+      src="/assets/images/logo.png "
+      class="w-40 cursor-pointer "
+      alt=""
+    />
+    <ul class="flex-1 text-center">
+      <li class="list-none inline-block px-5">
+        <a href="/index.html" class="no-underline text-white px-2">Home</a>
+      </li>
+      <li class="list-none inline-block px-5">
+        <a
+          href="/Dictionary/Dictionary.html"
+          class="no-underline text-white px-2"
+          >Dictionary</a
+        >
+      </li>
+      <li class="list-none inline-block px-5">
+        <a
+          href="/src/pages/about.html"
+          class="no-underline text-white px-2"
+          >About</a
+        >
+      </li>
+      <li class="list-none inline-block px-5">
+        <a
+          href="/src/pages/features.html"
+          class="no-underline text-white px-2"
+          >Features</a
+        >
+      </li>
+      <li class="list-none inline-block px-5">
+        <a
+          href="/src/pages/Game/Game.html"
+          class="no-underline text-white px-2"
+          >Game</a
+        >
+      </li>
+      <li class="list-none inline-block px-5">
+        <a
+          href="/src/pages/Deals/Deals.html"
+          class="no-underline text-white px-2"
+          >Deals</a
+        >
+      </li>
+    </ul>
+    <img src="/assets/images/cart.png" class="w-8 cursor-pointer" alt="" />
+    <p id ="count" class="text-red-100 ">0</p>
+  </nav>
+ 
+    <h2 class="text-2xl font-bold mb-4 border-b-4 border-blue-500 pb-2">Weather App</h2>
+    <div class="flex space-x-2 mb-4 border p-4 bg-white shadow-lg rounded-md">
+        <input type="text" id="city" placeholder="Enter city name" class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button id="getWeatherBtn" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Get Weather</button>
+    </div>
+    
+    <div id="weather-info" ></div>
+</body>
+<script>
+   
+</script>
+</html>

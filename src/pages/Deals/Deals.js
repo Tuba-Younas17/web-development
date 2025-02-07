@@ -1,6 +1,6 @@
 
-import { descriptionOfDiscountedDeals } from '../utils/dealsfunctions/descriptionOfDiscountedDeals.js';
-import {descriptionOfExclusiveDeals } from '../utils/dealsfunctions/descriptionofexclusivedeals.js';
+import { descriptionOfDiscountedDeals } from '../utils/dealsFunctions/descriptionofDiscountedDeals.js';
+import {descriptionOfExclusiveDeals } from '../utils/dealsFunctions/descriptionOfExclusiveDeals.js';
 
 
 

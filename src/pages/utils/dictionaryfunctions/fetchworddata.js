@@ -1,4 +1,4 @@
-import { speakinputword } from "./speakinputword.js";
+import { speakinputword } from  "./speakinputword.js";
 export const fetchWordData = async (baseurl, result) => {
     let inpWord = document.getElementById("input-word").value;
     console.log("input word: ", inpWord);
