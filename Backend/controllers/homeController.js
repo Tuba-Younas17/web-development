@@ -1,3 +1,3 @@
-export const homePage=(req, res) => {
+export const homeController=(req, res) => {
     res.send("Hello, Express!");
 };

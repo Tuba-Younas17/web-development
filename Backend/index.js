@@ -1,8 +1,9 @@
 import express from "express";
 import path from "path";
 import cors from "cors"
-import { homePage } from "./controllers/homeController.js";
-import { aboutPage } from "./controllers/aboutController.js";
+// import { homeController } from "./controllers/homeController.js";
+// import { aboutController,  } from "./controllers/aboutController.js";
+import {router} from "./routes/apiRoutes/apiRouter.js";
 
 const app = express();
 app.use(cors());
@@ -10,9 +11,12 @@ const PORT = 3000;
 
 // Serve static files from the 'public' folder
 app.use(express.static("public"));
+app.use("/api", router);
 
-app.get("/",homeController); ;
-app.get("/about", aboutController); 
+// app.get("/api",homeController);
+// app.get("/api/about",aboutController);
+// app.get("/",homeController); ;
+// app.get("/about", aboutController); 
 
 // Start the server
 app.listen(PORT, () => {

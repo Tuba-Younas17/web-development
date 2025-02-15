@@ -1,3 +1,3 @@
-export const aboutPage=(req, res) => {
+export const aboutController=(req, res) => {
     res.send("About Page");
 }
