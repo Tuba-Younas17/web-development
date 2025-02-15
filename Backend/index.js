@@ -1,21 +1,18 @@
 import express from "express";
 import path from "path";
+import cors from "cors"
+import { homePage } from "./controllers/homeController.js";
+import { aboutPage } from "./controllers/aboutController.js";
 
 const app = express();
+app.use(cors());
 const PORT = 3000;
 
 // Serve static files from the 'public' folder
 app.use(express.static("public"));
 
-// Home route
-app.get("/", (req, res) => {
-    res.send("Hello, Express!");
-});
-
-// About route - Send about.html
-app.get("/about", (req, res) => {
-    res.sendFile(path.resolve("public/about.html"));
-});
+app.get("/",homeController); ;
+app.get("/about", aboutController); 
 
 // Start the server
 app.listen(PORT, () => {
