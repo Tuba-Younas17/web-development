@@ -1,0 +1,1 @@
+ export const weatherApi = `https://goweather.herokuapp.com/weather/${city}`;
