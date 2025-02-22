@@ -4,7 +4,7 @@ const Carosuel = ({ images }) => {
 	return (
 		<div
 			id="default-carousel"
-			className="relative w-full mt-9"
+			className="relative w-full mt-4"
 			data-carousel="slide"
 		>
 			{/* Carousel wrapper */}

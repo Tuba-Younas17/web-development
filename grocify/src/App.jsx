@@ -1,24 +1,21 @@
 import React from "react";
-import TopSeller from "./components/views/homeViews/TopSeller";
-import BreakfastProducts from "./components/views/homeViews/BreakfastProducts";
-import YoungPeopleBuy from "./components/views/homeViews/YoungPeopleBuy";
-import FooterSection from "./components/Layout/Footer";
-import Description from "./components/views/homeViews/Description";
-import Carosuel from "./components/views/homeViews/Carosuel";
-import BreakfastProductsData from "./data/BreakFastProductsData";
-import TopSellerData from "./data/TopSellerProductsData";
-import CarouselImages from "./data/CarosuelImagesData";
-import YoungPeopleBuyData from "./data/YoungPeopleProductsData";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Features from "./components/pages/Features";
+import Deals from "./components/pages/Deals";
 
 const App = () => {
 	return (
 		<>
-			<Carosuel images={CarouselImages} />
-			<Description />
-			<TopSeller title="Top Sellers" data={TopSellerData} />
-			<BreakfastProducts title="Breakfast Products" products={BreakfastProductsData}  />
-			<YoungPeopleBuy  title="Young People Buy"  products={YoungPeopleBuyData}/>
-			<FooterSection />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About/>} />
+				<Route path="/features" element={<Features/>} />
+				<Route path="/deals" element={<Deals/>} />
+
+
+			</Routes>
 		</>
 	);
 };
