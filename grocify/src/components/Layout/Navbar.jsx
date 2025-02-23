@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
 	return (
 		<>
 			<nav className="flex items-center bg-gray-900 text-gray-200 py-4 px-6">
@@ -19,7 +19,7 @@ const Navbar = () => {
 							Home
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className=" list-none inline-block px-5">
 						<Link
 							to="/about"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -85,7 +85,7 @@ const Navbar = () => {
 						alt="Cart"
 					/>
 					<p id="count" className="text-yellow-400 font-bold">
-						0
+					{cartCount}
 					</p>
 				</div>
 			</nav>

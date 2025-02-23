@@ -8,14 +8,12 @@ import Collaborations from "../views/aboutViews/Collaborations";
 import { partners } from "../../data/Patners";
 
 const About = () => {
-  return (
-    <>
-       <Navbar/>
-      <AboutUs aboutData={AboutData} />
-      <Collaborations partners={partners} />
-      <FooterSection/>
-    </>
-  );
+	return (
+		<>
+			<AboutUs aboutData={AboutData} />
+			<Collaborations partners={partners} />
+		</>
+	);
 };
 
 export default About;

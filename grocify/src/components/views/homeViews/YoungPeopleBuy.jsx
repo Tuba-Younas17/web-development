@@ -1,6 +1,6 @@
 import React from "react";
 
-const YoungPeopleBuy = ({title, products }) => {
+const YoungPeopleBuy = ({title, products,addToCart }) => {
 	return (
 		<div className="p-8 bg-indigo-100 rounded-md mt-7">
 			<h2 className="text-3xl font-bold mb-6 text-red-600">
@@ -29,7 +29,9 @@ const YoungPeopleBuy = ({title, products }) => {
 									{salePrice}
 								</span>
 							</div>
-							<button className="btn w-full mt-4 h-12 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 transition-colors">
+							<button 
+							onClick={addToCart} 
+							className="btn w-full mt-4 h-12 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 transition-colors">
 								{button}
 							</button>
 						</div>
