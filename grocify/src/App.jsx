@@ -9,19 +9,19 @@ import Navbar from "./components/Layout/Navbar";
 
 
 const App = () => {
-	const [cartCount,setCartCount]=useState(0);
-	const addToCart = () => {
-		setCartCount(cartCount + 1); 
-	};
-	 console.log(cartCount);
+	// const [cartCount,setCartCount]=useState(0);
+	// const addToCart = () => {
+	// 	setCartCount(cartCount + 1); 
+	// };
+	 //console.log(cartCount);
 	return (
 		<>
-		    <Navbar cartCount={cartCount} />
+		    <Navbar  />
 			<Routes>
-			    <Route exact path="/" element={<Home addToCart={addToCart} />} />   
+			    <Route exact path="/" element={<Home />} />   
 				<Route exact path="/about" element={<About />} />
 				<Route exact path="/features" element={<Features />} />
-				<Route exact path="/deals" element={<Deals addToCart={addToCart} />} />
+				<Route exact path="/deals" element={<Deals />} />
 			</Routes>
 			<FooterSection/>
 		</>

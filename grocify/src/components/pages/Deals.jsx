@@ -4,11 +4,11 @@ import DiscountedDealData from "../../data/dealData/DiscountedDealData";
 import ExclusiveDeals from "../views/dealsViews/ExclusiveDealView";
 import ExclusiveDealData from "../../data/dealData/ExclusiveDealData";
 
-const Deals = ({ addToCart }) => {
+const Deals = () => {
 	return (
 		<>
-			<DiscountedDeals deals={DiscountedDealData} addToCart={addToCart} />
-			<ExclusiveDeals deals={ExclusiveDealData} addToCart={addToCart} />
+			<DiscountedDeals deals={DiscountedDealData}  />
+			<ExclusiveDeals deals={ExclusiveDealData} />
 		</>
 	);
 };

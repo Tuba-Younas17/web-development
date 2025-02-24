@@ -10,7 +10,7 @@ import Carosuel from "../views/homeViews/Carosuel";
 import Description from "../views/homeViews/Description";
 
 
-const Home = ({ addToCart }) => {
+const Home = () => {
 	return (
 		<>
 			
@@ -19,16 +19,17 @@ const Home = ({ addToCart }) => {
 			<TopSeller 
 			    title="Top Sellers" 
 				data={TopSellerData} 
-				addToCart={addToCart}/>
+				// addToCart={addToCart}
+				/>
 			<BreakfastProducts
 				title="Breakfast Products"
 				products={BreakFastProductsData}
-				addToCart={addToCart}
+				// addToCart={addToCart}
 			/>
 			<YoungPeopleBuy
 				title="Young People Buy"
 				products={YoungPeopleBuyData}
-				addToCart={addToCart}
+				// addToCart={addToCart}
 			/>
 			
 		</>

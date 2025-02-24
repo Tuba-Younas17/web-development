@@ -1,6 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { increment } from "../../../features/counter/counterSlice";
 
-const BreakfastProducts = ({ title, products ,addToCart}) => {
+const BreakfastProducts = ({ title, products }) => {
+	const dispatch=useDispatch();
 	return (
 		<div className="p-8 bg-indigo-100 rounded-md mt-7">
 			<h2 className="text-3xl font-bold mb-6 text-red-600">{title}</h2>
@@ -23,7 +26,8 @@ const BreakfastProducts = ({ title, products ,addToCart}) => {
 							</span>
 						</div>
 						<button 
-						onClick={addToCart} 
+						// onClick={addToCart} 
+						onClick={() => dispatch(increment())}
 						 className="btn w-full mt-4 h-12 bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 transition-colors">
 							Add to Cart
 						</button>
