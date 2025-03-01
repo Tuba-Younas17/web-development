@@ -1,5 +1,4 @@
 import React from "react";
-
 const Carosuel = ({ images }) => {
 	return (
 		<div

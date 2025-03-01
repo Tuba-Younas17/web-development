@@ -9,18 +9,16 @@ import YoungPeopleBuy from "../views/homeViews/YoungPeopleBuy";
 import Carosuel from "../views/homeViews/Carosuel";
 import Description from "../views/homeViews/Description";
 
-
 const Home = () => {
 	return (
 		<>
-			
 			<Carosuel images={CarouselImages} />
 			<Description />
-			<TopSeller 
-			    title="Top Sellers" 
-				data={TopSellerData} 
+			<TopSeller
+				title="Top Sellers"
+				data={TopSellerData}
 				// addToCart={addToCart}
-				/>
+			/>
 			<BreakfastProducts
 				title="Breakfast Products"
 				products={BreakFastProductsData}
@@ -31,7 +29,6 @@ const Home = () => {
 				products={YoungPeopleBuyData}
 				// addToCart={addToCart}
 			/>
-			
 		</>
 	);
 };

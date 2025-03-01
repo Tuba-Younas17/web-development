@@ -1,6 +1,6 @@
 import React from "react";
-import { increment } from "../../../features/counter/counterSlice";
 import { useDispatch } from "react-redux";
+import { increment } from "../../../reduxToolkit/features/counter/counterSlice";
 
 const YoungPeopleBuy = ({title, products }) => {
 	const dispatch = useDispatch(); 

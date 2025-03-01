@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = ({ aboutData }) => {
 	return (
-		<section className="py-12 bg-gray-500 text-gray-200">
+		<section className="py-12 bg-gray-500  bg-[url('/src/assets/Image.png')] text-gray-200">
 			<div className="container mx-auto px-4 ">
 				<div className="text-center">
 					<h2 className="text-4xl font-extrabold text-white mb-4">

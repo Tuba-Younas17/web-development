@@ -1,19 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { increment } from "../../../features/counter/counterSlice";
+import { increment } from "../../../reduxToolkit/features/counter/counterSlice";
+
 
 const DiscountedDeals = ({ deals }) => {
 	const dispatch=useDispatch();
 	return (
-		<div className="container mx-auto p-4">
-			<h2 className="text-4xl mt-4 font-bold mb-4 text-center">
+		<div className=" bg-[url('/src/assets/Image.png')] mx-auto p-4">
+			<h2 className="text-4xl mt-4 font-bold text-white mb-4 text-center">
 				Discounted Deals
 			</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{deals.map((deal) => (
 					<div
 						key={deal.id}
-						className="border p-6 rounded shadow-lg flex flex-col justify-between min-h-[280px]"
+						className="border p-6 rounded bg-white shadow-lg flex flex-col justify-between min-h-[280px]"
 					>
 						<div>
 							<h3 className="text-xl font-semibold">
@@ -31,10 +32,11 @@ const DiscountedDeals = ({ deals }) => {
 								))}
 							</ul>
 						</div>
-						<button 
-						// onClick={addToCart}
-						onClick={() => dispatch(increment())}
-						className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition self-center w-full md:w-auto">
+						<button
+							// onClick={addToCart}
+							onClick={() => dispatch(increment())}
+							className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition self-center w-full md:w-auto"
+						>
 							Add to Cart
 						</button>
 					</div>

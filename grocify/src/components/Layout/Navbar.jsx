@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-	const count = useSelector((state) => state.counter.value)
-     
+	const count = useSelector((state) => state.counter.value);
+
 	return (
 		<>
 			<nav className="flex items-center bg-gray-900 text-gray-200 py-4 px-6">
@@ -79,7 +79,6 @@ const Navbar = () => {
 							Game
 						</Link>
 					</li>
-					
 				</ul>
 				<div className="flex items-center space-x-2">
 					<img
@@ -88,8 +87,8 @@ const Navbar = () => {
 						alt="Cart"
 					/>
 					<p id="count" className="text-yellow-400 font-bold">
-					{/* {cartCount} */}
-					{count}
+						{/* {cartCount} */}
+						{count}
 					</p>
 				</div>
 			</nav>

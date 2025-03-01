@@ -2,7 +2,7 @@ import React from "react";
 
 const Collaborations = ({ partners }) => {
 	return (
-		<section className="py-12 bg-gray-500 text-gray-200">
+		<section className="py-12  bg-[url('/src/assets/Image.png')] text-gray-200">
 			<div className="container mx-auto px-4">
 				<h2 className="text-4xl font-extrabold text-white pt-8 pb-4 text-center">
 					Our Collaborations

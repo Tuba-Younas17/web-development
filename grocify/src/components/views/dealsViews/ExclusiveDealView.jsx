@@ -1,12 +1,13 @@
 import React from "react";
-import { increment } from "../../../features/counter/counterSlice";
 import { useDispatch } from "react-redux";
+import { increment } from "../../../reduxToolkit/features/counter/counterSlice";
+
 
 const ExclusiveDeals = ({ deals }) => {
 	const dispatch = useDispatch();
 	return (
-		<div className="container mx-auto p-4">
-			<h2 className="text-4xl mt-4 font-bold mb-8 text-center">
+		<div className="  bg-[url('/src/assets/Image.png')] mx-auto p-4">
+			<h2 className="text-4xl mt-4 font-bold text-white mb-8 text-center">
 				Exclusive Deals
 			</h2>
 			<div className="flex flex-wrap justify-around gap-8">
@@ -33,10 +34,11 @@ const ExclusiveDeals = ({ deals }) => {
 								))}
 							</ul>
 						</div>
-						<button 
-						// onClick={addToCart}
-						onClick={() => dispatch(increment())}
-						className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition self-center">
+						<button
+							// onClick={addToCart}
+							onClick={() => dispatch(increment())}
+							className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition self-center"
+						>
 							Add to Cart
 						</button>
 					</div>

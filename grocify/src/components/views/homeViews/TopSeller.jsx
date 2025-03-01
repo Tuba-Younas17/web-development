@@ -1,9 +1,8 @@
 import { useDispatch } from "react-redux";
-import { increment } from "../../../features/counter/counterSlice";
+import { increment } from "../../../reduxToolkit/features/counter/counterSlice";
 
-
-const TopSeller = ({ title, data}) => {
-	const dispatch = useDispatch()
+const TopSeller = ({ title, data }) => {
+	const dispatch = useDispatch();
 	return (
 		<div className="p-8 bg-indigo-100 rounded-md mt-7">
 			<h2 className="text-3xl font-bold mb-6 text-red-600">{title}</h2>
