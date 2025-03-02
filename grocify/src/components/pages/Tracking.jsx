@@ -7,7 +7,7 @@ const Tracking = () => {
 	const [data, setData] = useState("Click a button to fetch data.");
 	const [loading, setLoading] = useState(false);
 
-    return (
+	return (
 		<div className=" bg-[url('/src/assets/Image.png')] flex justify-center items-center h-screen bg-gray-100">
 			<div className="max-w-lg w-full bg-white p-6 rounded-lg shadow-md">
 				<h1 className="text-xl font-bold mb-4">

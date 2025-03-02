@@ -7,16 +7,14 @@ const Dictionary = () => {
 	const [data, setData] = useState(null);
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [searchTrigger, setSearchTrigger] = useState(false); 
-
+	const [searchTrigger, setSearchTrigger] = useState(false);
 
 	useEffect(() => {
 		if (searchTrigger) {
 			FetchWordMeaning(word, setData, setError, setLoading);
-			setSearchTrigger(false); 
+			setSearchTrigger(false);
 		}
 	}, [searchTrigger]);
-
 
 	const handleSearch = () => {
 		setSearchTrigger(true);

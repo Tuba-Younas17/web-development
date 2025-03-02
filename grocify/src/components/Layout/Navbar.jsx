@@ -70,6 +70,14 @@ const Navbar = () => {
 							Weather Prediction
 						</Link>
 					</li>
+					<li className="list-none inline-block px-5">
+						<Link
+							to="/add-grocery"
+							className="no-underline hover:text-yellow-400 px-2"
+						>
+							Add Grocery
+						</Link>
+					</li>
 
 					<li className="list-none inline-block px-5">
 						<Link
