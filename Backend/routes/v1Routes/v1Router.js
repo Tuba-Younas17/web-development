@@ -5,8 +5,6 @@ import { adminRouter } from './adminRoutes/adminRouter.js';
 import { buyerRouter } from './buyerRoutes/buyerRouter.js';
 import { sellerRouter } from './sellerRoutes/sellerRouter.js';
 import { windowBuyerRouter } from './windowBuyerRoutes/windowBuyerRouter.js';
-;
-
 
 export const v1Router =express.Router();
 

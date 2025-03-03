@@ -1,24 +1,15 @@
 import express from "express";
-import path from "path";
-import cors from "cors"
-// import { homeController } from "./controllers/homeController.js";
-// import { aboutController,  } from "./controllers/aboutController.js";
-import {router} from "./routes/apiRoutes/apiRouter.js";
+import cors from "cors";
+import { apiRouter } from "./routes/apiRoutes/apiRouter.js";
+import connectToMongoDb from "./config/database.js";
 
 const app = express();
+connectToMongoDb();
 app.use(cors());
+app.use(express.json()); 
+app.use("/api", apiRouter);
+
 const PORT = 3000;
-
-// Serve static files from the 'public' folder
-app.use(express.static("public"));
-app.use("/api", router);
-
-// app.get("/api",homeController);
-// app.get("/api/about",aboutController);
-// app.get("/",homeController); ;
-// app.get("/about", aboutController); 
-
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://127.0.0.1:${PORT}`);
+	console.log(`Server is running on http://127.0.0.1:${PORT}`);
 });
