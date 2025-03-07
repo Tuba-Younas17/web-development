@@ -78,6 +78,14 @@ const Navbar = () => {
 							Add Grocery
 						</Link>
 					</li>
+					<li className="list-none inline-block px-5">
+						<Link
+							to="/get-grocery"
+							className="no-underline hover:text-yellow-400 px-2"
+						>
+							Grocery List
+						</Link>
+					</li>
 
 					<li className="list-none inline-block px-5">
 						<Link

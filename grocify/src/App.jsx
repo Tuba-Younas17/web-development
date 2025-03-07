@@ -12,6 +12,7 @@ import PageNotFound from "./components/pages/PageNotFound";
 import Game from "./components/pages/Game";
 import Weather from "./components/pages/Weather";
 import GroceryForm from "./components/pages/GroceryForm";
+import GroceryList from "./components/pages/GroceryList";
 
 const App = () => {
 	// const [cartCount,setCartCount]=useState(0);
@@ -32,6 +33,7 @@ const App = () => {
 				<Route exact path="/game" element={<Game />} />
 				<Route exact path="/weather" element={<Weather />} />
 				<Route exact path="/add-grocery" element={<GroceryForm />} />
+				<Route exact path="/get-grocery" element={<GroceryList />} />
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />
