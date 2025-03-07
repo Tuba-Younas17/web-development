@@ -5,6 +5,7 @@ const groceryItemSchema = new Schema({
 	title: String, // String is shorthand for {type: String}
 	quantity: String,
 	price: Number,
+	description: String, 
 	discount: String,
 	
 });
