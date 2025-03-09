@@ -13,6 +13,7 @@ import Game from "./components/pages/Game";
 import Weather from "./components/pages/Weather";
 import GroceryForm from "./components/pages/GroceryForm";
 import GroceryList from "./components/pages/GroceryList";
+import SpecificGroceryItem from "./components/pages/dynamicPages/SpecificGroceryItem";
 
 const App = () => {
 	// const [cartCount,setCartCount]=useState(0);
@@ -34,6 +35,7 @@ const App = () => {
 				<Route exact path="/weather" element={<Weather />} />
 				<Route exact path="/add-grocery" element={<GroceryForm />} />
 				<Route exact path="/get-grocery" element={<GroceryList />} />
+				<Route exact path="/get-grocery-items-by-id/:id" element={<SpecificGroceryItem />}/>
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />

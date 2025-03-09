@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const GroceryList = () => {
 	const [groceries, setGroceries] = useState([]);
 
-	useEffect(() => {
-		const fetchGroceries = async () => {
-			try {
-				const response = await axios.get(
-					"http://127.0.0.1:3000/api/v1/admin/get_grocery_items"
-				);
-				setGroceries(response.data);
-			} catch (error) {
-				console.error("Error fetching groceries:", error);
-			}
-		};
+	const fetchGroceries = async () => {
+		try {
+			const response = await axios.get(
+				"http://127.0.0.1:3000/api/v1/admin/get-grocery-items"
+			);
+			setGroceries(response.data);
+		} catch (error) {
+			console.error("Error fetching groceries:", error);
+		}
+	};
 
+	useEffect(() => {
 		fetchGroceries();
 	}, []);
 
@@ -34,21 +35,23 @@ const GroceryList = () => {
 								key={item._id}
 								className="bg-gray-50 p-4 shadow-md rounded-lg hover:bg-gray-300 hover:cursor-pointer transition"
 							>
-								<h3 className="text-lg font-bold">
-									{item.title}
-								</h3>
-								<h4 className="text-lg font-semibold">
-									{item.description}
-								</h4>
-								<p className="text-gray-700">
-									Price: Rs.{item.price}
-								</p>
-								<p className="text-gray-700">
-									Quantity: {item.quantity}
-								</p>
-								<p className="text-gray-700">
-									Discount: {item.discount}%
-								</p>
+									<Link to={`/get-grocery-items-by-id/${item._id}`}>
+									<h3 className="text-lg font-bold">
+										{item.title}
+									</h3>
+									<h4 className="text-lg font-semibold">
+										{item.description}
+									</h4>
+									<p className="text-gray-700">
+										Price: Rs.{item.price}
+									</p>
+									<p className="text-gray-700">
+										Quantity: {item.quantity}
+									</p>
+									<p className="text-gray-700">
+										Discount: {item.discount}%
+									</p>
+								</Link>
 							</div>
 						))
 					) : (

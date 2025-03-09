@@ -19,7 +19,7 @@ const GroceryForm = () => {
 
 		try {
 			const response = await axios.post(
-				"http://127.0.0.1:3000/api/v1/admin/add_grocery_item",
+				"http://127.0.0.1:3000/api/v1/admin/add-grocery-items",
 				formData
 			);
 			console.log("API Response:", response.data);
