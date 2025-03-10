@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import SkeletonLoader from "../Layout/SkeletonLoader";
+import { getGroceries } from "../../utils/fetchGroceryDataFromMongoDb/getGroceryDeatilsOfAllItems.js";
 
 const GroceryList = () => {
 	const [groceries, setGroceries] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
-	const fetchGroceries = async () => {
-		try {
-			const response = await axios.get(
-				"http://127.0.0.1:3000/api/v1/admin/get-grocery-items"
-			);
-			setGroceries(response.data);
-		} catch (error) {
-			console.error("Error fetching groceries:", error);
-		}
-	};
+	// Modular function to fetch groceries
 
+
+	// Fetch data on mount
 	useEffect(() => {
-		fetchGroceries();
+		getGroceries(setLoading, setGroceries, setError);
 	}, []);
+
+	if (loading) return <SkeletonLoader />; // Show loader when loading
+	if (error) return <p className="text-center text-red-500">{error}</p>; // Show error message
 
 	return (
 		<div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -35,7 +34,9 @@ const GroceryList = () => {
 								key={item._id}
 								className="bg-gray-50 p-4 shadow-md rounded-lg hover:bg-gray-300 hover:cursor-pointer transition"
 							>
-									<Link to={`/get-grocery-items-by-id/${item._id}`}>
+								<Link
+									to={`/get-grocery-items-by-id/${item._id}`}
+								>
 									<h3 className="text-lg font-bold">
 										{item.title}
 									</h3>
