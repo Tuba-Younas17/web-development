@@ -8,5 +8,6 @@ export const fetchGroceries = async () => {
            return response.data
         } catch (error) {
             console.error("Error fetching groceries:", error);
+            throw error;
         }
     };

@@ -8,16 +8,12 @@ const GroceryList = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// Modular function to fetch groceries
-
-
-	// Fetch data on mount
 	useEffect(() => {
 		getGroceries(setLoading, setGroceries, setError);
 	}, []);
 
-	if (loading) return <SkeletonLoader />; // Show loader when loading
-	if (error) return <p className="text-center text-red-500">{error}</p>; // Show error message
+	if (loading) return <SkeletonLoader />; 
+	if (error) return <p className="text-center text-red-500">{error}</p>; 
 
 	return (
 		<div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -41,7 +37,10 @@ const GroceryList = () => {
 										{item.title}
 									</h3>
 									<h4 className="text-lg font-semibold">
-										{item.description}
+										{item.description.slice(0, 10)}...{"  "}
+										<span className="text-blue-400 hover:text-blue-700">
+											Read more
+										</span>
 									</h4>
 									<p className="text-gray-700">
 										Price: Rs.{item.price}
