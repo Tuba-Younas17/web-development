@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import SkeletonLoader from "../../Layout/SkeletonLoader";
+import SkeletonLoader from "../../Layout/SkeletonLoader.jsx";
 import { getGroceryDetails } from "../../../utils/fetchGroceryDataFromMongoDb/getGroceryDetailsOFSpcificId.js";
 import { handleDelete } from "../../../utils/fetchGroceryDataFromMongoDb/deleteGroceryItemById.js";
 
@@ -43,7 +43,7 @@ const SpecificGroceryItem = () => {
 
 				{/* Delete Button */}
 				<button
-					onClick={() => handleDelete(id,navigate)}
+					onClick={() => handleDelete(id, navigate)}
 					className="w-full bg-red-500 text-white py-2 mt-2 rounded-md hover:bg-red-600 transition"
 				>
 					Delete Item

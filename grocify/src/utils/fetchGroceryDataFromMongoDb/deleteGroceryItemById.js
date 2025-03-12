@@ -1,5 +1,5 @@
 
-import { deleteGroceryItemById } from "../../services/DeleteGrocertItemById";
+import { deleteGroceryItemById } from "../../services/grocifyCrudServices/DeleteGrocertItemById";
 
 export const handleDelete = async (id, navigate) => {
 	const isConfirmed = window.confirm(

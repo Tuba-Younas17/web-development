@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SkeletonLoader from "../Layout/SkeletonLoader";
-import { getGroceries } from "../../utils/fetchGroceryDataFromMongoDb/getGroceryDeatilsOfAllItems.js";
+
+import { getGroceries } from "../../../utils/fetchGroceryDataFromMongoDb/getGroceryDeatilsOfAllItems.js";
+import SkeletonLoader from "../../Layout/SkeletonLoader.jsx";
 
 const GroceryList = () => {
 	const [groceries, setGroceries] = useState([]);

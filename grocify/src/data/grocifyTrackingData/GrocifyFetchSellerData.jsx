@@ -1,28 +1,28 @@
-import { grocifyBuyerInformation } from "../utils/GrocifyBuyerInformation";
+import { grocifySellerInformation } from "../../utils/grocifyTrackingInformation/GrocifySellerInformation";
 
-export const fetchBuyers = async (setData, setLoading) => {
+export const fetchSellers = async (setData, setLoading) => {
 	setLoading(true);
 
 	try {
-		const result = await grocifyBuyerInformation();
+		const result = await grocifySellerInformation();
 		setLoading(false);
 
 		if (!result || result.error) {
 			setData(
 				<li key="error" className="text-red-500">
 					{result?.error || "Failed to load buyer data."}
-				</li>,
+				</li>
 			);
 			return;
 		}
 
 		if (Array.isArray(result)) {
 			setData(
-				result.map((buyer, index) => (
+				result.map((seller, index) => (
 					<li key={index} className="py-2 border-b">
-						{buyer.buyerName} ordered{" "}
-						<strong>{buyer.product}</strong> - Quantity:{" "}
-						{buyer.quantity}, Status: {buyer.status}
+						{seller.sellerName} product{" "}
+						<strong>{seller.product}</strong> - Quantity:{" "}
+						{seller.quantitySold}, Revenue: {seller.revenue}
 					</li>
 				))
 			);
@@ -30,7 +30,7 @@ export const fetchBuyers = async (setData, setLoading) => {
 			setData(
 				<li key="invalid" className="text-red-500">
 					Invalid data format received.
-				</li>,
+				</li>
 			);
 		}
 	} catch (error) {
@@ -39,7 +39,7 @@ export const fetchBuyers = async (setData, setLoading) => {
 		setData(
 			<li key="error-fetch" className="text-red-500">
 				An error occurred while fetching data.
-			</li>,
+			</li>
 		);
 	}
 };

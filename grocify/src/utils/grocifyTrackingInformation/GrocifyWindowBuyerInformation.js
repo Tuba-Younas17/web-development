@@ -1,9 +1,9 @@
 import axios from "axios";
-import { grocifySellerApi } from "../services/SellerInfoApi";
+import { windowBuyerApi } from "../../services/grocifyTrackingServices/WindowBuyerApi";
 
-export const grocifySellerInformation = async () => {
+export const grocifyWindowBuyerInformation = async () => {
 	try {
-		const response = await axios.get(grocifySellerApi);
+		const response = await axios.get(windowBuyerApi);
 		return response.data.data; // Return the buyer data instead of manipulating the DOM
 	} catch (error) {
 		console.error("Error fetching buyers:", error);

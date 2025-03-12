@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { fetchBuyers } from "../../data/GrocifyFetchBuyerData";
-import { fetchSellers } from "../../data/GrocifyFetchSellerData";
-import { fetchStock } from "../../data/GrocifyFetchStockData";
-import { fetchWindowBuyers } from "../../data/GrocifyFetchWindowBuyerData";
+import { fetchBuyers } from "../../../data/grocifyTrackingData/GrocifyFetchBuyerData";
+import { fetchSellers } from "../../../data/grocifyTrackingData/GrocifyFetchSellerData";
+import { fetchStock } from "../../../data/grocifyTrackingData/GrocifyFetchStockData";
+import { fetchWindowBuyers } from "../../../data/grocifyTrackingData/GrocifyFetchWindowBuyerData";
+
 const Tracking = () => {
 	const [data, setData] = useState("Click a button to fetch data.");
 	const [loading, setLoading] = useState(false);
