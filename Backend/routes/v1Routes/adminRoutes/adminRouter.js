@@ -5,6 +5,7 @@ import { addGroceryItem } from "../../../controllers/v1Controllers/adminControll
 import { getGroceryItemsController } from "../../../controllers/v1Controllers/adminController/getGroceryItemsController.js";
 import { getGroceryItemsByIdController } from "../../../controllers/v1Controllers/adminController/getGroceryItemsByIdController.js";
 import { deleteGroceryItemByIdController } from "../../../controllers/v1Controllers/adminController/deleteGroceryItemByIdController.js";
+import { updateGroceryItemByIdController } from "../../../controllers/v1Controllers/adminController/updateGroceryItemByIdController.js";
 
 export const adminRouter = express.Router();
 
@@ -12,4 +13,5 @@ adminRouter.post("/add-grocery-items", addGroceryItem);
 adminRouter.get("/products", getProductsController);
 adminRouter.get("/get-grocery-items", getGroceryItemsController);
 adminRouter.get("/get-grocery-items-by-id/:id", getGroceryItemsByIdController);
-adminRouter.delete( "/delete-grocery-items-by-id/:id",deleteGroceryItemByIdController);
+adminRouter.delete("/delete-grocery-items-by-id/:id", deleteGroceryItemByIdController)
+adminRouter.put("/update-grocery-items-by-id/:id",updateGroceryItemByIdController);
