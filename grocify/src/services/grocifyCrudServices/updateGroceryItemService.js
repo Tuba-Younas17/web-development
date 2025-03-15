@@ -1,14 +1,17 @@
 import axios from "axios";
+import { END_POINTS } from "../../constants/urls";
 
 export const updateGroceryItemService = async (id, grocery) => {
 	try {
 		const response = await axios.put(
-			`http://127.0.0.1:3000/api/v1/admin/update-grocery-items-by-id/${id}`,
+			END_POINTS.ADMIN.UPDATE_PRODUCT(id),
 			grocery
 		);
-		return response.data.data; 
+		return response.data; 
 	} catch (error) {
-		console.error("Update error:", error);
-		throw error; 
+		console.error("Update error:", error.message);
+		throw new Error(
+			error.response?.data?.message || "Failed to update grocery item."
+		);
 	}
 };

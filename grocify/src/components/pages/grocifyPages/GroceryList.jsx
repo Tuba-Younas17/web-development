@@ -5,16 +5,23 @@ import { getGroceries } from "../../../utils/fetchGroceryDataFromMongoDb/getGroc
 import SkeletonLoader from "../../Layout/SkeletonLoader.jsx";
 
 const GroceryList = () => {
-	const [groceries, setGroceries] = useState([]);
+	const [groceries, setGroceries] = useState([]); // Ensure default is an array
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		getGroceries(setLoading, setGroceries, setError);
+		getGroceries(
+			setLoading,
+			(data) => {
+				console.log("Fetched groceries:", data); // Debugging
+				setGroceries(Array.isArray(data) ? data : []); // Ensure it's always an array
+			},
+			setError
+		);
 	}, []);
 
-	if (loading) return <SkeletonLoader />; 
-	if (error) return <p className="text-center text-red-500">{error}</p>; 
+	if (loading) return <SkeletonLoader />;
+	if (error) return <p className="text-center text-red-500">{error}</p>;
 
 	return (
 		<div className="flex justify-center items-center min-h-screen bg-gray-100">

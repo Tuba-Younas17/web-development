@@ -3,7 +3,6 @@ import { addGroceryItemService } from "../../services/grocifyCrudServices/AddGro
 
 export const handleSubmit = async (e, formData) => {
 	e.preventDefault();
-	console.log("Submitting Form Data:", formData);
 
 	try {
 		await addGroceryItemService(formData);

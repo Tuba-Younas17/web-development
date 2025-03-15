@@ -1,10 +1,9 @@
 import axios from "axios";
+import { END_POINTS } from "../../constants/urls";
 
 export const fetchGroceryDetails = async (id) => {
 	try {
-		const response = await axios.get(
-			`http://127.0.0.1:3000/api/v1/admin/get-grocery-items-by-id/${id}`
-		);
+		const response = await axios.get(END_POINTS.ADMIN.GET_PRODUCT_BY_ID(id))
 		return response.data; 
 	} catch (err) {
 		throw new Error("Failed to fetch grocery item"); 
