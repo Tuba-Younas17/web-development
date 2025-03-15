@@ -5,7 +5,7 @@ export const updateGroceryItemByIdController = async (req, res) => {
 		console.log("Incoming Request Data:", req.body);
 		const { id } = req.params;
 		const { title, quantity, price, description, discount } = req.body;
-		console.log(title, quantity, price, description, discount);
+		// console.log(title, quantity, price, description, discount);
 
 		const updatedGroceryItem = await GroceryItem.findByIdAndUpdate(
 			id,
