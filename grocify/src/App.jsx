@@ -19,6 +19,7 @@ import Tracking from "./components/pages/grocifyPages/Tracking";
 import UpdateItemById from "./components/pages/grocifydynamicPages/UpdateItemById";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {faShoppingCart,faEdit,faTrash,} from "@fortawesome/free-solid-svg-icons";
+import Signup from "./components/pages/grocifyPages/Signup";
 library.add(faShoppingCart, faTrash, faEdit);
 
 const App = () => {
@@ -37,7 +38,8 @@ const App = () => {
 				<Route exact path="/add-grocery" element={<GroceryForm />} />
 				<Route exact path="/get-grocery" element={<GroceryList />} />
 				<Route exact path="/get-grocery-items-by-id/:id"element={<SpecificGroceryItem />}/>
-				<Route exact path="/update-grocery-items-by-id/:id"element={<UpdateItemById />}/>
+				<Route exact path="/update-grocery-items-by-id/:id" element={<UpdateItemById />} />
+				<Route exact path="/signup" element={ <Signup/>} />
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />

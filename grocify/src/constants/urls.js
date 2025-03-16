@@ -4,6 +4,7 @@ export const BASE_URL = import.meta.env.VITE_API_URL;
 export const API = `/api`;
 export const V1 = `/v1`;
 export const ADMIN = `/admin`;
+export const AUTH = `/auth`;
 
 export const API_V1_PREFIX = `${API}${V1}`;
 export const API_URL = `${BASE_URL}${API_V1_PREFIX}`;
@@ -18,4 +19,7 @@ export const END_POINTS = {
 		DELETE_PRODUCT: (id) =>
 			`${API_URL}${ADMIN}//delete-grocery-items-by-id/${id}`,
 	},
+	AUTH: {
+        SIGN_UP: `${API_URL}${AUTH}/signup`,
+    },
 };

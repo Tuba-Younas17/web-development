@@ -7,14 +7,17 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="flex items-center bg-gray-900 text-gray-200 py-4 px-6">
+			<nav className="flex items-center justify-between bg-gray-900 text-gray-200 py-4 px-6">
+				{/* Logo */}
 				<img
 					src="./src/assets/navbarImages/logo.png"
 					className="w-40 cursor-pointer"
 					alt="Logo"
 				/>
-				<ul className="flex-1 text-center">
-					<li className="list-none inline-block px-5">
+
+				{/* Navigation Links */}
+				<ul className="flex-1 text-center  ">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -22,7 +25,7 @@ const Navbar = () => {
 							Home
 						</Link>
 					</li>
-					<li className=" list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/about"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -30,7 +33,7 @@ const Navbar = () => {
 							About
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/features"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -38,7 +41,7 @@ const Navbar = () => {
 							Features
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/deals"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -46,7 +49,7 @@ const Navbar = () => {
 							Deals
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/tracking"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -54,7 +57,7 @@ const Navbar = () => {
 							Tracking
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/dictionary"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -62,7 +65,7 @@ const Navbar = () => {
 							Dictionary
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/weather"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -70,7 +73,7 @@ const Navbar = () => {
 							Weather Prediction
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/add-grocery"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -78,7 +81,7 @@ const Navbar = () => {
 							Add Grocery
 						</Link>
 					</li>
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/get-grocery"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -86,8 +89,7 @@ const Navbar = () => {
 							Grocery List
 						</Link>
 					</li>
-
-					<li className="list-none inline-block px-5">
+					<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 						<Link
 							to="/game"
 							className="no-underline hover:text-yellow-400 px-2"
@@ -96,16 +98,27 @@ const Navbar = () => {
 						</Link>
 					</li>
 				</ul>
-				<div className="flex items-center space-x-2">
-					<img
-						src="./src/assets/navbarImages/cart.png"
-						className="w-8 cursor-pointer"
-						alt="Cart"
-					/>
-					<p id="count" className="text-yellow-400 font-bold">
-						{/* {cartCount} */}
-						{count}
-					</p>
+
+				{/* Cart and Signup Section */}
+				<div className="flex items-center space-x-4">
+
+					<div className="flex items-center space-x-2">
+						<img
+							src="./src/assets/navbarImages/cart.png"
+							className="w-8 cursor-pointer"
+							alt="Cart"
+						/>
+						<p id="count" className="text-yellow-400 font-bold">
+							{count}
+						</p>
+					</div>
+
+					<Link
+						to="/signup"
+						className="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300"
+					>
+						Sign Up
+					</Link>
 				</div>
 			</nav>
 		</>
