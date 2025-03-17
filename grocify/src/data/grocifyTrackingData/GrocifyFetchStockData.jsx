@@ -1,4 +1,4 @@
-import { grocifyStockInformation } from "../../utils/grocifyTrackingInformation/GrocifyStockInformation";
+import { grocifyStockInformation } from "../../utils/grocifyTrackingInformation/grocifyStockInformation";
 
 export const fetchStock = async (setData, setLoading) => {
 	setLoading(true);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SkeletonLoader from "../Layout/SkeletonLoader";
-import { FetchWordMeaning } from "../../utils/FetchWordMeaning";
+import { FetchWordMeaning } from "../../utils/fetchWordMeaning";
 
 const Dictionary = () => {
 	const [word, setWord] = useState("");

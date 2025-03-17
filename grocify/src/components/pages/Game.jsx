@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { generateRandomNumber } from "../../utils/gameFunctions/GenerateRandomNumber";
-import { checkGuess } from "../../utils/gameFunctions/GameLogic";
-import { resetGame } from "../../utils/gameFunctions/ResetGame";
+import { generateRandomNumber } from "../../utils/gameFunctions/generateRandomNumber";
+import { checkGuess } from "../../utils/gameFunctions/gameLogic";
+import { resetGame } from "../../utils/gameFunctions/resetGame";
 
 const Game = () => {
 	// State variables

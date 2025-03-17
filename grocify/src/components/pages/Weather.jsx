@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getWeather } from "../../utils/GetWeatherData";
+import { getWeather } from "../../utils/getWeatherData";
 
 
 const Weather = () => {

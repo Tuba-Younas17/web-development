@@ -1,4 +1,4 @@
-import { grocifyWindowBuyerInformation } from "../../utils/grocifyTrackingInformation/GrocifyWindowBuyerInformation";
+import { grocifyWindowBuyerInformation } from "../../utils/grocifyTrackingInformation/grocifyWindowBuyerInformation";
 
 export const fetchWindowBuyers = async (setData, setLoading) => {
 	setLoading(true);

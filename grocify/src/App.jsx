@@ -20,6 +20,7 @@ import UpdateItemById from "./components/pages/grocifydynamicPages/UpdateItemByI
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {faShoppingCart,faEdit,faTrash,} from "@fortawesome/free-solid-svg-icons";
 import Signup from "./components/pages/grocifyPages/Signup";
+import Login from "./components/pages/Login";
 library.add(faShoppingCart, faTrash, faEdit);
 
 const App = () => {
@@ -39,7 +40,8 @@ const App = () => {
 				<Route exact path="/get-grocery" element={<GroceryList />} />
 				<Route exact path="/get-grocery-items-by-id/:id"element={<SpecificGroceryItem />}/>
 				<Route exact path="/update-grocery-items-by-id/:id" element={<UpdateItemById />} />
-				<Route exact path="/signup" element={ <Signup/>} />
+				<Route exact path="/signup" element={<Signup />} />
+				<Route exact path="/login" element={ <Login/>} />
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />

@@ -1,4 +1,4 @@
-import { getWeatherApiUrl, } from "../services/WeatherApi";
+import { getWeatherApiUrl, } from "../services/weatherApi";
 
 export const getWeather = async (city, setWeatherData, setError) => {
 	if (!city) {

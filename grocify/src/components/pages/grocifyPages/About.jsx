@@ -1,8 +1,8 @@
 import React from "react";
 import AboutUs from "../../views/aboutViews/AboutUs";
 import Collaborations from "../../views/aboutViews/Collaborations";
-import AboutData from "../../../data/grocifyAboutPageData/AboutData";
-import { partners } from "../../../data/grocifyAboutPageData/Patners";
+import AboutData from "../../../data/grocifyAboutPageData/aboutData";
+import { partners } from "../../../data/grocifyAboutPageData/patners";
 
 
 const About = () => {

@@ -1,4 +1,4 @@
-import { fetchGroceryDetails } from "../../services/grocifyCrudServices/FetchSpecificGroceryDetailsService.js";
+import { fetchGroceryDetails } from "../../services/grocifyCrudServices/fetchSpecificGroceryDetailsService.js";
 
 export const getGroceryDetails = async (setLoading,id,setGrocery,setError) => {
 	try {

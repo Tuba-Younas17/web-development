@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import SkeletonLoader from "../../Layout/SkeletonLoader.jsx";
 import { getGroceryDetails } from "../../../utils/fetchGroceryDataFromMongoDb/getGroceryDetailsOFSpcificId.js";
-import { deleteGroceryItemById } from "../../../services/grocifyCrudServices/DeleteGrocertItemById.js";
+import { deleteGroceryItemById } from "../../../services/grocifyCrudServices/deleteGrocertItemById.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCartPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 

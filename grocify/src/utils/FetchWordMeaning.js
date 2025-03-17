@@ -1,5 +1,5 @@
 import axios from "axios";
-import { dictionaryApi } from "../services/DictionayApi";
+import { dictionaryApi } from "../services/dictionayApi";
 
 export const FetchWordMeaning = (
 	word,

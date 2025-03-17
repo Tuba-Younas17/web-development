@@ -1,5 +1,5 @@
 import axios from "axios";
-import { windowBuyerApi } from "../../services/grocifyTrackingServices/WindowBuyerApi";
+import { windowBuyerApi } from "../../services/grocifyTrackingServices/windowBuyerApi";
 
 export const grocifyWindowBuyerInformation = async () => {
 	try {

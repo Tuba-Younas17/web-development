@@ -1,4 +1,4 @@
-import { addGroceryItemService } from "../../services/grocifyCrudServices/AddGroceryItemService.js";
+import { addGroceryItemService } from "../../services/grocifyCrudServices/addGroceryItemService.js";
 
 
 export const handleSubmit = async (e, formData) => {

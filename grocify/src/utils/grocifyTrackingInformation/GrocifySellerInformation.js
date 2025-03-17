@@ -1,5 +1,5 @@
 import axios from "axios";
-import { grocifySellerApi } from "../../services/grocifyTrackingServices/SellerInfoApi";
+import { grocifySellerApi } from "../../services/grocifyTrackingServices/sellerInfoApi";
 
 export const grocifySellerInformation = async () => {
 	try {
