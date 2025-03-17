@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs";
 import { User } from "../../../models/UserModel.js";
+import dotnev from "dotenv";
+dotnev.config()
 
 export const userSignUpController = async (req, res) => {
 	try {
@@ -16,12 +18,16 @@ export const userSignUpController = async (req, res) => {
 		const existingUser = await User.findOne({ email });
 		if (existingUser) {
 			return res.json({
-				success: false,
+				success: true,
 				message: "User already exists. Please log in.",
+				toastNotification: false,
 			});
 		}
+		const saltRounds = process.env.SALT_ROUNDS;
+		const salt = bcrypt.genSaltSync(+saltRounds);
+		// console.log(salt);
 
-		const hashedPassword = await bcrypt.hash(password, 10);
+		const hashedPassword = await bcrypt.hash(password, salt);
 		const newUser = new User({
 			name,
 			email,
@@ -33,6 +39,7 @@ export const userSignUpController = async (req, res) => {
 			success: true,
 			message: "User signed up successfully!",
 			user: savedUser,
+			toastNotification: true,
 		});
 	} catch (error) {
 		console.error("Signup Error:", error);
