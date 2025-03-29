@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { handleSubmitForLogIn } from "../../utils/signUpAndLoginUtils/handleSubmitForLogIn.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { handleSubmitForLogIn } from "../../../utils/signUpAndLoginUtils/handleSubmitForLogIn.js";
 
 const Login = () => {
 	const [formData, setFormData] = useState({
@@ -12,7 +11,7 @@ const Login = () => {
 		password: "",
 	});
 	const [error, setError] = useState("");
-	const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
 
 	// Handle input change
@@ -29,7 +28,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
-		handleSubmitForLogIn(navigate, formData);
+		handleSubmitForLogIn(navigate, formData); 
 	};
 
 	return (

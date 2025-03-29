@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,11 +19,15 @@ import Tracking from "./components/pages/grocifyPages/Tracking";
 import UpdateItemById from "./components/pages/grocifydynamicPages/UpdateItemById";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {faShoppingCart,faEdit,faTrash,} from "@fortawesome/free-solid-svg-icons";
-import Signup from "./components/pages/grocifyPages/Signup";
-import Login from "./components/pages/Login";
+import Login from "./components/pages/auth/Login";
+import Signup from "./components/pages/auth/Signup";
+import Dashboard from "./components/pages/grocifyPages/Dashboard";
+import ProtectedRoute from "./components/pages/grocifyProtectedRouting/ProtectedRoutes";
+
 library.add(faShoppingCart, faTrash, faEdit);
 
 const App = () => {
+	const authToken = localStorage.getItem("authToken");
 	return (
 		<>
 			<Navbar />
@@ -40,8 +44,15 @@ const App = () => {
 				<Route exact path="/get-grocery" element={<GroceryList />} />
 				<Route exact path="/get-grocery-items-by-id/:id"element={<SpecificGroceryItem />}/>
 				<Route exact path="/update-grocery-items-by-id/:id" element={<UpdateItemById />} />
-				<Route exact path="/signup" element={<Signup />} />
-				<Route exact path="/login" element={ <Login/>} />
+				{/* Protected Routes */}
+                <Route element={<ProtectedRoute />}>
+                    <Route exact path="/dashboard" element={<Dashboard />} />
+                    
+                </Route>
+
+				<Route exact path="/auth/signup" element={<Signup/>} />
+				<Route exact path="/auth/login" element={<Login />} />
+				
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />

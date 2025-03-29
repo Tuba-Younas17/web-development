@@ -28,7 +28,7 @@ const Signup = () => {
 			formData,
 		);
 		if (signupSuccess) {
-			navigate("/login");
+			navigate("/auth/login");
 		}
 	};
 

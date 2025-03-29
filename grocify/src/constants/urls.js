@@ -20,6 +20,7 @@ export const END_POINTS = {
 			`${API_URL}${ADMIN}//delete-grocery-items-by-id/${id}`,
 	},
 	AUTH: {
-        SIGN_UP: `${API_URL}${AUTH}/signup`,
-    },
+		SIGN_UP: `${API_URL}${AUTH}/signup`,
+		LOG_IN: `${API_URL}${AUTH}/login`
+	},
 };

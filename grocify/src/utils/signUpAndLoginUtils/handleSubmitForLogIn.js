@@ -1,25 +1,29 @@
-
 import { toast } from "react-toastify";
 import { loginServive } from "../../services/signUpAndLoginService/loginService.js";
 
-
-export const handleSubmitForLogIn = async (navigate, formData) => {
+export const handleSubmitForLogIn = async (
+	navigate,
+	formData
+) => {
 	try {
-		// const response = await axios.post(
-		// 	"http://127.0.0.1:5000/api/v1/auth/login",
-		// 	formData // Send form data in the request body
-        // );
-        const response=await loginServive(formData);
+		const response = await loginServive(formData);
+		console.log(response);
+		const { success, message, toastNotification, token } = response;
 
-		// Extract response data
-		const { success, message, toastNotification } = response;
+		if (success && token) {
+			localStorage.setItem("authToken", token); // Store token in localStorage
+			localStorage.setItem("user", JSON.stringify(response));
+			// console.log( token)
+			toast.success(message || "Login successful!");
 
-		if (toastNotification) {
-			navigate("/"); // Navigate to home if toastNotification is true
+			if (toastNotification) {
+				navigate("/dashboard");
+			}
 		} else {
 			toast.error(message || "Login failed. Try again.");
 		}
 	} catch (err) {
+		console.error("Login error:", err);
 		toast.error("An error occurred. Please try again.");
 	}
 };
