@@ -23,6 +23,7 @@ import Login from "./components/pages/auth/Login";
 import Signup from "./components/pages/auth/Signup";
 import Dashboard from "./components/pages/grocifyPages/Dashboard";
 import ProtectedRoute from "./components/pages/grocifyProtectedRouting/ProtectedRoutes";
+import VerifySuccess from "./components/pages/auth/VerifySuccess";
 
 library.add(faShoppingCart, faTrash, faEdit);
 
@@ -42,23 +43,37 @@ const App = () => {
 				<Route exact path="/weather" element={<Weather />} />
 				<Route exact path="/add-grocery" element={<GroceryForm />} />
 				<Route exact path="/get-grocery" element={<GroceryList />} />
-				<Route exact path="/get-grocery-items-by-id/:id"element={<SpecificGroceryItem />}/>
-				<Route exact path="/update-grocery-items-by-id/:id" element={<UpdateItemById />} />
+				<Route
+					exact
+					path="/get-grocery-items-by-id/:id"
+					element={<SpecificGroceryItem />}
+				/>
+				<Route
+					exact
+					path="/update-grocery-items-by-id/:id"
+					element={<UpdateItemById />}
+				/>
 				{/* Protected Routes */}
-                <Route element={<ProtectedRoute />}>
-                    <Route exact path="/dashboard" element={<Dashboard />} />
-                    
-                </Route>
+				<Route element={<ProtectedRoute />}>
+					<Route exact path="/dashboard" element={<Dashboard />} />
+				</Route>
 
-				<Route exact path="/auth/signup" element={<Signup/>} />
+				<Route exact path="/auth/signup" element={<Signup />} />
 				<Route exact path="/auth/login" element={<Login />} />
-				
+				<Route exact path="/auth/VerifySuccess" element={<VerifySuccess />} />
+
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
 			<FooterSection />
 
 			{/* ✅ ToastContainer for toast notifications */}
-			<ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				hideProgressBar={false}
+				closeOnClick
+				pauseOnHover
+				draggable
 			/>
 		</>
 	);
