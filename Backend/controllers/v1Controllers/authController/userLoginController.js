@@ -9,43 +9,41 @@ export const userLoginController = async (req, res) => {
 	try {
 		const { email, password } = req.body;
 
-		// Check if user exists
 		const existingUser = await User.findOne({ email });
 		if (!existingUser) {
-            return res.json({
-				toastNotification: false,
+			return res.json({
 				success: true,
-				message: "Invalid email or password",
+				toastNotification: false,
+                message: "Invalid email or password",
 			});
 		}
 
-		// Verify password
 		const passwordMatch = await bcrypt.compare(
 			password,
 			existingUser.password
 		);
 		if (!passwordMatch) {
-            return res.json({
-				toastNotification: false,
+			return res.json({
 				success: true,
+				toastNotification: false,
 				message: "Invalid email or password",
 			});
 		}
 
-		// Generate JWT token
 		const token = jwt.sign(
 			{ userId: existingUser._id },
-			process.env.JWT_SECRET,
+			process.env.JWT_SECRET
 			// {
 			// 	expiresIn: "1h", // Token expires in 1 hour
 			// }
 		);
 
-        return res.json({
-            toastNotification:true,
+		return res.json({
 			success: true,
+			toastNotification: true,
+
 			message: "Login successful",
-			token:token
+			token: token,
 		});
 	} catch (error) {
 		console.error(error);

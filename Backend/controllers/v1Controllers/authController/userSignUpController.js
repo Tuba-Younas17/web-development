@@ -1,7 +1,10 @@
 import bcrypt from "bcryptjs";
 import { User } from "../../../models/UserModel.js";
 import dotnev from "dotenv";
-dotnev.config()
+import { Token } from "../../../models/tokenModel.js";
+import crypto from "crypto";
+import { sendEmail } from "../../../utils/emailService.js";
+dotnev.config();
 
 export const userSignUpController = async (req, res) => {
 	try {
@@ -35,12 +38,27 @@ export const userSignUpController = async (req, res) => {
 		});
 
 		const savedUser = await newUser.save();
+		// sending email
+		// saving the new token
+		const token = await new Token({
+			userId: savedUser._id,
+			token: crypto.randomBytes(32).toString("hex"),
+		}).save();
+		// making url
+		// making url
+		const url = `${process.env.NODE_BASE_URL}${process.env.API}${process.env.V1}/users/${savedUser._id}/verify/${token.token}`;
+		console.log(url);
+
+		// sending email
+		await sendEmail(savedUser.email, "Verify Email", url);
 		return res.status(201).json({
 			success: true,
-			message: "User signed up successfully!",
+			message:
+				"User signed up successfully! An Email Sent to your account,please verify",
 			user: savedUser,
 			toastNotification: true,
 		});
+		
 	} catch (error) {
 		console.error("Signup Error:", error);
 		return res.status(500).json({
