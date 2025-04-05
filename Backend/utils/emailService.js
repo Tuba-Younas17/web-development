@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const sendEmail = async (email, subject, url) => {
+export const sendEmail = async (email, subject, message) => {
 	try {
 		// configuring the nodemailer transporter
 		const transporter = nodemailer.createTransport({
@@ -22,7 +22,7 @@ export const sendEmail = async (email, subject, url) => {
 			from: process.env.USER,
 			to: email,
 			subject: subject,
-			text: url,
+			html: message,
 		});
 		console.log("Email sent successfully");
 	} catch (error) {

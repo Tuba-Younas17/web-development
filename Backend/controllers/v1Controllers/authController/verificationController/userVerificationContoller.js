@@ -5,7 +5,7 @@ export const userVerifyTokenController = async (req, res) => {
 	try {
 		const { userId, token } = req.params;
 		const user = await User.findOne({ _id: userId });
-
+        // user not found
 		if (!user) {
 			return res.status(400).send("<h2>Invalid Link</h2>");
 		}
@@ -15,13 +15,14 @@ export const userVerifyTokenController = async (req, res) => {
 			token: token,
 		});
 
+        // Verify the token
 		if (!verificationToken) {
 			return res.status(400).send("<h2>Invalid Token</h2>");
 		}
 
 		// Update the user as verified
-		await User.updateOne({ _id: user._id }, { $set: { verified: true } });
-
+		await User.updateOne({ _id: user._id }, { $set: { isVerified: true } });
+		
 		// Remove the token from the database
 		await Token.deleteOne({ _id: verificationToken._id });
 

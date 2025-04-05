@@ -47,10 +47,18 @@ export const userSignUpController = async (req, res) => {
 		// making url
 		// making url
 		const url = `${process.env.NODE_BASE_URL}${process.env.API}${process.env.V1}/users/${savedUser._id}/verify/${token.token}`;
-		console.log(url);
+		// console.log(url);
+		const message = `
+			<h2>Hello ${savedUser.name},</h2>
+			<p>Thank you for signing up at Grocify!</p>
+			<p>Please verify your email by clicking the link below:</p>
+			<a href="${url}" target="_blank">Verify Email</a>
+			<p>If you didn't sign up, please ignore this email.</p>
+			<p>Thanks,<br/>The Grocify Team</p>
+		`;
 
-		// sending email
-		await sendEmail(savedUser.email, "Verify Email", url);
+		await sendEmail(savedUser.email, "Confirm Your Email for Grocify", message);
+
 		return res.status(201).json({
 			success: true,
 			message:
@@ -58,7 +66,6 @@ export const userSignUpController = async (req, res) => {
 			user: savedUser,
 			toastNotification: true,
 		});
-		
 	} catch (error) {
 		console.error("Signup Error:", error);
 		return res.status(500).json({

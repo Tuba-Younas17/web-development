@@ -17,6 +17,14 @@ export const userLoginController = async (req, res) => {
                 message: "Invalid email or password",
 			});
 		}
+		//Ensure  only verified user can login
+		if (!existingUser.isVerified) {
+			return res.status(401).json({
+				success: true,
+				toastNotification: false,
+				message: "Email not verified. Please check your inbox.",
+			});
+		}
 
 		const passwordMatch = await bcrypt.compare(
 			password,
@@ -41,7 +49,6 @@ export const userLoginController = async (req, res) => {
 		return res.json({
 			success: true,
 			toastNotification: true,
-
 			message: "Login successful",
 			token: token,
 		});
