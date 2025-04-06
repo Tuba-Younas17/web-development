@@ -10,10 +10,10 @@ export const addGroceryItemService = async (formData) => {
 		);
 		console.log("API Response:", response.data);
 
-		// ✅ Show success toast
+		// Show success toast
 		toast.success("Grocery item added successfully!", {
 			position: "top-right",
-			autoClose: 3000, // Closes in 3 seconds
+			autoClose: 3000,
 			hideProgressBar: false,
 			closeOnClick: true,
 			pauseOnHover: true,
@@ -25,16 +25,36 @@ export const addGroceryItemService = async (formData) => {
 	} catch (error) {
 		console.error("Error adding grocery item:", error);
 
-		// ❌ Show error toast
-		toast.error("Failed to add item! Please try again.", {
-			position: "top-right",
-			autoClose: 3000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-		});
+		// If validation error exists, display it
+		if (
+			error.response &&
+			error.response.data &&
+			error.response.data.errors
+		) {
+			const validationErrors = error.response.data.errors;
+			validationErrors.forEach((err) => {
+				toast.error(err.msg, {
+					position: "top-right",
+					autoClose: 3000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			});
+		} else {
+			// Default error message if no validation errors
+			toast.error("Failed to add item! Please try again.", {
+				position: "top-right",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		}
 
 		throw error;
 	}

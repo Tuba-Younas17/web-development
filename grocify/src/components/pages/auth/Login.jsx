@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { handleSubmitForLogIn } from "../../../utils/signUpAndLoginUtils/handleSubmitForLogIn.js";
+// import { handleSubmitForLogIn } from "../../../utils/signUpAndLoginUtils/handleSubmitForLogIn.js";
 
 const Login = () => {
 	const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
-		handleSubmitForLogIn(navigate, formData); 
+		handleSubmitForLogIn(navigate, formData);
 	};
 
 	return (

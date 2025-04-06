@@ -7,6 +7,7 @@ const GroceryForm = () => {
 		title: "",
 		price: "",
 		quantity: "",
+		description: "",
 		discount: "",
 	});
 
@@ -22,7 +23,7 @@ const GroceryForm = () => {
 				</h2>
 				<form
 					onSubmit={(e) => {
-						handleSubmit(e,formData);
+						handleSubmit(e, formData);
 					}}
 					className="flex flex-col gap-3"
 				>
@@ -46,6 +47,14 @@ const GroceryForm = () => {
 						type="text"
 						name="quantity"
 						placeholder="Quantity"
+						onChange={handleChange}
+						required
+						className="p-2 border rounded"
+					/>
+					<input
+						type="text"
+						name="description"
+						placeholder="Description"
 						onChange={handleChange}
 						required
 						className="p-2 border rounded"
