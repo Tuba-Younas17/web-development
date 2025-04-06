@@ -6,10 +6,12 @@ import { getGroceryItemsByIdController } from "../../../controllers/v1Controller
 import { deleteGroceryItemByIdController } from "../../../controllers/v1Controllers/adminController/deleteGroceryItemByIdController.js";
 import { updateGroceryItemByIdController } from "../../../controllers/v1Controllers/adminController/updateGroceryItemByIdController.js";
 import { addGroceryItemController } from "../../../controllers/v1Controllers/adminController/addGroceryItemController.js";
+import { validGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
+import { validateGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
 
 export const adminRouter = express.Router();
 
-adminRouter.post("/add-grocery-items", addGroceryItemController);
+adminRouter.post("/add-grocery-items",validGroceryRequest,validateGroceryRequest, addGroceryItemController);
 adminRouter.get("/products", getProductsController);
 adminRouter.get("/get-grocery-items", getGroceryItemsController);
 adminRouter.get("/get-grocery-items-by-id/:id", getGroceryItemsByIdController);

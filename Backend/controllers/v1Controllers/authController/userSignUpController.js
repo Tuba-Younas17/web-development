@@ -10,7 +10,8 @@ export const userSignUpController = async (req, res) => {
 	try {
 		// console.log("Incoming Request Data:", req.body);
 		const { name, email, password } = req.body;
-
+		
+        //ensure no field is empty
 		if (!name || !email || !password) {
 			return res.json({
 				success: false,
@@ -19,6 +20,7 @@ export const userSignUpController = async (req, res) => {
 		}
 
 		const existingUser = await User.findOne({ email });
+		//check if user already exists
 		if (existingUser) {
 			return res.json({
 				success: true,
