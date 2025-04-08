@@ -5,9 +5,11 @@ export const API = `/api`;
 export const V1 = `/v1`;
 export const ADMIN = `/admin`;
 export const AUTH = `/auth`;
+export const REVIEWS = `/reviews`;
 
 export const API_V1_PREFIX = `${API}${V1}`;
 export const API_URL = `${BASE_URL}${API_V1_PREFIX}`;
+
 export const END_POINTS = {
 	ADMIN: {
 		ADD_GROCERY_ITEM: `${API_URL}${ADMIN}/add-grocery-items`,
@@ -21,6 +23,10 @@ export const END_POINTS = {
 	},
 	AUTH: {
 		SIGN_UP: `${API_URL}${AUTH}/signup`,
-		LOG_IN: `${API_URL}${AUTH}/login`
+		LOG_IN: `${API_URL}${AUTH}/login`,
+	},
+	REVIEWS: {
+		GET_ALL_REVIEWS: `${API_URL}${REVIEWS}/get-review`,
+		ADD_REVIEW: `${API_URL}${REVIEWS}/add-review`,
 	},
 };

@@ -1,33 +1,48 @@
 import React, { useState } from "react";
-import { handleSubmitforSingup } from "../../../utils/signUpAndLoginUtils/handleSubmitforSingup.js";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { handleSubmitforSingup } from "../../../utils/signUpAndLoginUtils/handleSubmitforSingup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"; // Import FontAwesome icons
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = () => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		password: "",
-	});
 	const [showPassword, setShowPassword] = useState(false);
-	const [message, setMessage] = useState(""); // New state for success message
-
-	const handleChange = (e) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
-	};
+	const [message, setMessage] = useState("");
 
 	const togglePasswordVisibility = () => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		const signupSuccess = await handleSubmitforSingup(e, formData);
+	const formik = useFormik({
+		initialValues: {
+			name: "",
+			email: "",
+			password: "",
+		},
+		validationSchema: Yup.object({
+			name: Yup.string()
+				.min(3, "Name must be at least 3 characters")
+				.required("Name is required"),
+			email: Yup.string()
+				.email("Invalid email address")
+				.required("Email is required"),
+			password: Yup.string()
+				.min(6, "Password must be at least 6 characters")
+				.required("Password is required"),
+		}),
+		onSubmit: async (values, { setErrors }) => {
+			const signupSuccess = await handleSubmitforSingup(
+				values,
+				setErrors
+			);
 
-		if (signupSuccess) {
-			setMessage("Verification email is sent. Please check your inbox.");
-		}
-	};
+			if (signupSuccess) {
+				setMessage(
+					"Verification email is sent. Please check your inbox."
+				);
+			}
+		},
+	});
 
 	return (
 		<div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -41,30 +56,38 @@ const Signup = () => {
 						{message}
 					</div>
 				) : (
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={formik.handleSubmit}>
 						<div className="mb-4">
 							<label className="block text-gray-700">Name</label>
 							<input
 								type="text"
 								name="name"
-								value={formData.name}
-								onChange={handleChange}
+								{...formik.getFieldProps("name")}
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-								required
 							/>
+							{formik.touched.name && formik.errors.name && (
+								<p className="text-red-500 text-sm">
+									{formik.errors.name}
+								</p>
+							)}
 						</div>
+
 						<div className="mb-4">
 							<label className="block text-gray-700">Email</label>
 							<input
 								type="email"
 								name="email"
-								value={formData.email}
-								onChange={handleChange}
+								{...formik.getFieldProps("email")}
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-								required
 							/>
+							{formik.touched.email && formik.errors.email && (
+								<p className="text-red-500 text-sm">
+									{formik.errors.email}
+								</p>
+							)}
 						</div>
-						<div className="mb-4 relative">
+
+						<div className="mb-4">
 							<label className="block text-gray-700">
 								Password
 							</label>
@@ -72,10 +95,8 @@ const Signup = () => {
 								<input
 									type={showPassword ? "text" : "password"}
 									name="password"
-									value={formData.password}
-									onChange={handleChange}
+									{...formik.getFieldProps("password")}
 									className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 pr-10"
-									required
 								/>
 								<button
 									type="button"
@@ -87,7 +108,14 @@ const Signup = () => {
 									/>
 								</button>
 							</div>
+							{formik.touched.password &&
+								formik.errors.password && (
+									<p className="text-red-500 text-sm">
+										{formik.errors.password}
+									</p>
+								)}
 						</div>
+
 						<button
 							type="submit"
 							className="w-full text-white bg-blue-500 hover:bg-blue-600 py-2 rounded-lg transition"

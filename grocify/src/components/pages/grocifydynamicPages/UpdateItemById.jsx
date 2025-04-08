@@ -76,7 +76,7 @@ const UpdateItemById = () => {
 
 						<label className="block mt-2">Quantity:</label>
 						<input
-							type="number"
+							type="text"
 							name="quantity"
 							value={grocery.quantity}
 							onChange={handleChange}

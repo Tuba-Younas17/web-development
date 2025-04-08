@@ -1,7 +1,6 @@
+import { deleteGroceryItemById } from "../../services/grocifyCrudServices/deleteGrocertItemById";
 
-import { deleteGroceryItemById } from "../../services/grocifyCrudServices/DeleteGrocertItemById";
-
-export const handleDelete = async (id, navigate) => {
+export const handleDelete = async (id) => {
 	const isConfirmed = window.confirm(
 		"Are you sure you want to delete this item?"
 	);
@@ -9,9 +8,7 @@ export const handleDelete = async (id, navigate) => {
 
 	try {
 		await deleteGroceryItemById(id);
-		alert("Grocery item deleted successfully!");
-		navigate("/get-grocery");
 	} catch (err) {
-		alert("Failed to delete item.");
+		// Already handled by toast
 	}
 };

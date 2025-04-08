@@ -4,8 +4,6 @@ import { loginService } from "../../services/signUpAndLoginService/loginService.
 export const handleSubmitForLogIn = async (navigate, formData) => {
 	try {
 		const response = await loginService(formData);
-		// console.log(response);
-
 		const { success, message, toastNotification, token } = response;
 
 		if (success && token) {
@@ -14,15 +12,31 @@ export const handleSubmitForLogIn = async (navigate, formData) => {
 
 			if (toastNotification) {
 				toast.success(message || "Login successful!");
-				navigate("/dashboard");
+
+				const role = formData.role?.toLowerCase();
+
+				switch (role) {
+					case "admin":
+						navigate("/admin");
+						break;
+					case "vendor":
+						navigate("/vendor");
+						break;
+					case "buyer":
+						navigate("/");
+						break;
+					case "window buyer":
+						navigate("/window_buyer"); 
+						break;
+					default:
+						navigate("/auth/login");
+				}
 			}
 		} else {
-			// if toastNotification is false or any other issue
 			toast.error(message || "Login failed. Try again.");
 		}
 	} catch (err) {
 		console.error("Login error:", err);
-		// Show backend error message (e.g., "Email not verified")
 		toast.error(err.message || "An error occurred. Please try again.");
 	}
 };

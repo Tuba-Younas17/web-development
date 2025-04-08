@@ -24,6 +24,12 @@ import Signup from "./components/pages/auth/Signup";
 import Dashboard from "./components/pages/grocifyPages/Dashboard";
 import ProtectedRoute from "./components/pages/grocifyProtectedRouting/ProtectedRoutes";
 import VerifySuccess from "./components/pages/auth/VerifySuccess";
+import Window_BuyerComponent from "./components/pages/role/Window_BuyerComponent";
+import BuyerComponent from "./components/pages/role/BuyerComponent";
+import VendorComponent from "./components/pages/role/VendorComponent";
+import AdminComponent from "./components/pages/role/AdminComponent";
+import Review from "./components/pages/grocifyPages/Review";
+import AddReview from "./components/pages/grocifyPages/AddReview";
 
 library.add(faShoppingCart, faTrash, faEdit);
 
@@ -34,6 +40,8 @@ const App = () => {
 			<Navbar />
 			<Routes>
 				<Route exact path="/" element={<Home />} />
+				<Route exact path="/review" element={<Review />} />
+				<Route exact path="/add-review" element={<AddReview />} />
 				<Route exact path="/about" element={<About />} />
 				<Route exact path="/features" element={<Features />} />
 				<Route exact path="/deals" element={<Deals />} />
@@ -53,6 +61,14 @@ const App = () => {
 					path="/update-grocery-items-by-id/:id"
 					element={<UpdateItemById />}
 				/>
+				<Route path="/admin" element={<AdminComponent />} />
+				<Route path="/vendor" element={<VendorComponent />} />
+				<Route path="/buyer" element={<BuyerComponent />} />
+				<Route
+					exact
+					path="/window_buyer"
+					element={<Window_BuyerComponent />}
+				/>
 				{/* Protected Routes */}
 				<Route element={<ProtectedRoute />}>
 					<Route exact path="/dashboard" element={<Dashboard />} />
@@ -60,7 +76,11 @@ const App = () => {
 
 				<Route exact path="/auth/signup" element={<Signup />} />
 				<Route exact path="/auth/login" element={<Login />} />
-				<Route exact path="/auth/VerifySuccess" element={<VerifySuccess />} />
+				<Route
+					exact
+					path="/auth/VerifySuccess"
+					element={<VerifySuccess />}
+				/>
 
 				<Route exact path="*" element={<PageNotFound />} />
 			</Routes>
