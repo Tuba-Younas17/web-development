@@ -11,9 +11,14 @@ const UserSchema = new mongoose.Schema(
 			trim: true,
 		},
 		password: String,
-		isVerified: {
-			type: Boolean,
-			default: false,
+		// isVerified: {
+		// 	type: Boolean,
+		// 	default: false,
+		// },
+		roles: {
+			type: [String],
+			enum: ["buyer", "vendor", "admin", "window-buyer"],
+			default: ["buyer"], // most common default role
 		},
 	},
 	{

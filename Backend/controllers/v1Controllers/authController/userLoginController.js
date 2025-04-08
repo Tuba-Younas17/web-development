@@ -7,25 +7,19 @@ dotenv.config();
 
 export const userLoginController = async (req, res) => {
 	try {
-		const { email, password } = req.body;
+		const { email, password, role } = req.body;
 
+		// Step 1: Check if user exists
 		const existingUser = await User.findOne({ email });
 		if (!existingUser) {
 			return res.json({
 				success: true,
 				toastNotification: false,
-                message: "Invalid email or password",
-			});
-		}
-		//Ensure  only verified user can login
-		if (!existingUser.isVerified) {
-			return res.status(401).json({
-				success: true,
-				toastNotification: false,
-				message: "Email not verified. Please check your inbox.",
+				message: "Invalid email or password",
 			});
 		}
 
+		// Step 2: Match password
 		const passwordMatch = await bcrypt.compare(
 			password,
 			existingUser.password
@@ -38,18 +32,25 @@ export const userLoginController = async (req, res) => {
 			});
 		}
 
+		// Step 3: Check if user has the requested role
+		if (!existingUser.roles.includes(role)) {
+			return res.json({
+				success: true,
+				toastNotification: false,
+				message: `You do not have access as a ${role}`,
+			});
+		}
+
+		// Step 4: Generate token with role info
 		const token = jwt.sign(
-			{ userId: existingUser._id },
+			{ userId: existingUser._id, roles: existingUser.roles },
 			process.env.JWT_SECRET
-			// {
-			// 	expiresIn: "1h", // Token expires in 1 hour
-			// }
 		);
 
 		return res.json({
 			success: true,
 			toastNotification: true,
-			message: "Login successful",
+			message: `Login successful as ${role}`,
 			token: token,
 		});
 	} catch (error) {
