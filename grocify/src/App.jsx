@@ -30,6 +30,9 @@ import VendorComponent from "./components/pages/role/VendorComponent";
 import AdminComponent from "./components/pages/role/AdminComponent";
 import Review from "./components/pages/grocifyPages/Review";
 import AddReview from "./components/pages/grocifyPages/AddReview";
+import AddVendorForm from "./components/pages/role/addVendorForm";
+import UpdateVendorForm from "./components/pages/role/UpdateVendorForm";
+
 
 library.add(faShoppingCart, faTrash, faEdit);
 
@@ -51,6 +54,12 @@ const App = () => {
 				<Route exact path="/weather" element={<Weather />} />
 				<Route exact path="/add-grocery" element={<GroceryForm />} />
 				<Route exact path="/get-grocery" element={<GroceryList />} />
+				<Route exact path="/add-vendor" element={<AddVendorForm />} />
+				<Route
+					path="/update-vendor/:vendorId"
+					element={<UpdateVendorForm />}
+				/>
+
 				<Route
 					exact
 					path="/get-grocery-items-by-id/:id"

@@ -4,14 +4,29 @@ import * as Yup from "yup";
 import { handleSubmitforSingup } from "../../../utils/signUpAndLoginUtils/handleSubmitforSingup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useDropzone } from "react-dropzone"; // Import useDropzone
 
 const Signup = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [message, setMessage] = useState("");
+	const [selectedImage, setSelectedImage] = useState(null);
 
 	const togglePasswordVisibility = () => {
 		setShowPassword((prev) => !prev);
 	};
+
+	const handleImageDrop = (acceptedFiles) => {
+		if (acceptedFiles.length > 0) {
+			setSelectedImage(acceptedFiles[0]); // Set the first file as selected image
+		}
+	};
+
+	// Dropzone hook
+	const { getRootProps, getInputProps } = useDropzone({
+		onDrop: handleImageDrop,
+		accept: "image/*", // Only accept image files
+		maxFiles: 1, // Only allow one file to be uploaded
+	});
 
 	const formik = useFormik({
 		initialValues: {
@@ -31,8 +46,17 @@ const Signup = () => {
 				.required("Password is required"),
 		}),
 		onSubmit: async (values, { setErrors }) => {
+			const formData = new FormData();
+			formData.append("name", values.name);
+			formData.append("email", values.email);
+			formData.append("password", values.password);
+
+			if (selectedImage) {
+				formData.append("image", selectedImage); // Append the image file
+			}
+
 			const signupSuccess = await handleSubmitforSingup(
-				values,
+				formData,
 				setErrors
 			);
 
@@ -114,6 +138,28 @@ const Signup = () => {
 										{formik.errors.password}
 									</p>
 								)}
+						</div>
+
+						{/* Image Upload with react-dropzone */}
+						<div className="mb-4">
+							<label className="block text-gray-700">
+								Profile Image
+							</label>
+							<div
+								{...getRootProps()}
+								className="border-2 border-dashed p-6 rounded-lg text-center cursor-pointer"
+							>
+								<input {...getInputProps()} />
+								{selectedImage ? (
+									<p className="text-gray-500 text-sm mt-1">
+										{selectedImage.name}
+									</p>
+								) : (
+									<p className="text-gray-500 text-sm">
+										Drag & drop an image or click to select
+									</p>
+								)}
+							</div>
 						</div>
 
 						<button
