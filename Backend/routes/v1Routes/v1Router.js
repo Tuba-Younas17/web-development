@@ -8,6 +8,8 @@ import { windowBuyerRouter } from './windowBuyerRoutes/windowBuyerRouter.js';
 import { authRouter } from './authRoutes/authRouter.js';
 import { usersRouter } from './userRoutes/userRouter.js';
 import { reviewRouter } from './reviewRoutes/reviewRouter.js';
+import { vendorRouter } from './vendorRoutes/vendorRouter.js';
+
 
 export const v1Router =express.Router();
 
@@ -20,4 +22,5 @@ v1Router.use (`/buyer`,buyerRouter);
 v1Router.use(`/seller`,sellerRouter);
 v1Router.use(`/windowbuyer`, windowBuyerRouter);
 v1Router.use(`/reviews`, reviewRouter);
+v1Router.use(`/vendor`, vendorRouter);
 

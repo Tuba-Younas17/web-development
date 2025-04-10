@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema(
 			trim: true,
 		},
 		password: String,
+		profileImage: {
+			type: String,
+			default: "", // or provide a default avatar URL if needed
+		},
+
 		// isVerified: {
 		// 	type: Boolean,
 		// 	default: false,

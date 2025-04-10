@@ -8,10 +8,15 @@ import { updateGroceryItemByIdController } from "../../../controllers/v1Controll
 import { addGroceryItemController } from "../../../controllers/v1Controllers/adminController/addGroceryItemController.js";
 import { validGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
 import { validateGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
+import { multipartyMiddleware } from "../../../middlewares/fileUploadMiddlewares/fileUploadMiddlewareforGrocery.js";
 
 export const adminRouter = express.Router();
 
-adminRouter.post("/add-grocery-items",validGroceryRequest,validateGroceryRequest, addGroceryItemController);
+adminRouter.post("/add-grocery-items",
+    // validGroceryRequest,
+    // validateGroceryRequest,
+    multipartyMiddleware,
+    addGroceryItemController);
 adminRouter.get("/products", getProductsController);
 adminRouter.get("/get-grocery-items", getGroceryItemsController);
 adminRouter.get("/get-grocery-items-by-id/:id", getGroceryItemsByIdController);
