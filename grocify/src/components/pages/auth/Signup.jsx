@@ -5,6 +5,8 @@ import { handleSubmitforSingup } from "../../../utils/signUpAndLoginUtils/handle
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useDropzone } from "react-dropzone"; // Import useDropzone
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const Signup = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -15,25 +17,28 @@ const Signup = () => {
 		setShowPassword((prev) => !prev);
 	};
 
-	const handleImageDrop = (acceptedFiles) => {
-		if (acceptedFiles.length > 0) {
-			setSelectedImage(acceptedFiles[0]); // Set the first file as selected image
-		}
-	};
-
-	// Dropzone hook
+	// Dropzone hook for image upload
 	const { getRootProps, getInputProps } = useDropzone({
-		onDrop: handleImageDrop,
+		onDrop: (acceptedFiles) => {
+			if (acceptedFiles.length > 0) {
+				const file = acceptedFiles[0];
+				setSelectedImage(file);
+				formik.setFieldValue("image", file); // Update Formik field
+			}
+		},
 		accept: "image/*", // Only accept image files
 		maxFiles: 1, // Only allow one file to be uploaded
 	});
 
+	// Formik hook for managing form state
 	const formik = useFormik({
 		initialValues: {
 			name: "",
 			email: "",
 			password: "",
+			bio: "",
 		},
+
 		validationSchema: Yup.object({
 			name: Yup.string()
 				.min(3, "Name must be at least 3 characters")
@@ -44,15 +49,35 @@ const Signup = () => {
 			password: Yup.string()
 				.min(6, "Password must be at least 6 characters")
 				.required("Password is required"),
+			// bio: Yup.string()
+			// 	.min(10, "Bio must be at least 10 characters")
+			// 	.required("Bio is required"),
+			// image: Yup.mixed()
+			// 	.test("fileSize", "Image size is too large", (value) => {
+			// 		return !value || value.size <= 2 * 1024 * 1024; // 2MB
+			// 	})
+			// 	.test("fileType", "Unsupported file format", (value) => {
+			// 		return (
+			// 			!value ||
+			// 			["image/jpeg", "image/png", "image/jpg"].includes(
+			// 				value.type
+			// 			)
+			// 		);
+			// 	}),
 		}),
 		onSubmit: async (values, { setErrors }) => {
 			const formData = new FormData();
 			formData.append("name", values.name);
 			formData.append("email", values.email);
 			formData.append("password", values.password);
+			
 
 			if (selectedImage) {
-				formData.append("image", selectedImage); // Append the image file
+				formData.append("profileImage", selectedImage); // Use state instead of formik
+			}
+
+			if (values.bio) {
+				formData.append("bio", values.bio);
 			}
 
 			const signupSuccess = await handleSubmitforSingup(
@@ -140,6 +165,41 @@ const Signup = () => {
 								)}
 						</div>
 
+						<div className="mb-4">
+							<label className="block text-gray-700 mb-1">
+								Bio
+							</label>
+							{/* <CKEditor
+								editor={ClassicEditor}
+								data={formik.values.bio}
+								onChange={(event, editor) => {
+									const data = editor.getData();
+									formik.setFieldValue("bio", data);
+									formik.setTouched({ bio: true });
+								}}
+							/> */}
+							<CKEditor
+								editor={ClassicEditor}
+								data={formik.values.bio}
+								config={{
+									simpleUpload: {
+										uploadUrl:
+											"http://localhost:5000/api/v1/uploadImage/upload-image",
+									},
+								}}
+								onChange={(event, editor) => {
+									const data = editor.getData();
+									formik.setFieldValue("bio", data);
+									formik.setTouched({ bio: true });
+								}}
+							/>
+							{formik.touched.bio && formik.errors.bio && (
+								<p className="text-red-500 text-sm mt-1">
+									{formik.errors.bio}
+								</p>
+							)}
+						</div>
+
 						{/* Image Upload with react-dropzone */}
 						<div className="mb-4">
 							<label className="block text-gray-700">
@@ -160,6 +220,11 @@ const Signup = () => {
 									</p>
 								)}
 							</div>
+							{formik.touched.image && formik.errors.image && (
+								<p className="text-red-500 text-sm mt-1">
+									{formik.errors.image}
+								</p>
+							)}
 						</div>
 
 						<button
