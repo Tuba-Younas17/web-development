@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			default: "", // or provide a default avatar URL if needed
 		},
+		bio: {
+			type: String, // HTML content from CKEditor is stored as string
+			default: "",
+		},
 
 		// isVerified: {
 		// 	type: Boolean,

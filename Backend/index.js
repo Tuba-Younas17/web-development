@@ -13,7 +13,9 @@ app.use(express.json());
 // add middleware to parse form data instead of JSON
  app.use(express.urlencoded({ extended: true }));
  // use a static folder
- app.use(express.static('public'));
+//  app.use(express.static('public'));
+app.use("/uploads", express.static("public/uploads"));
+
 app.use("/api", apiRouter);
 
 const PORT = process.env.PORT || 3000;
