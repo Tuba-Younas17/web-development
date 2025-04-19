@@ -12,41 +12,43 @@ export const addGroceryItemController = async (req, res) => {
 		console.log("Incoming Request Data:", req.body);
 
 		const { title, quantity, price, description, discount } = req.body;
+		// Access user ID from middleware
+		const createdBy = req.userId;
 
 		// Access uploaded file(s)
-		const { images } = req.files;
+		// const { images } = req.files;
 
-		if (!images) {
-			return res.status(400).json({
-				success: false,
-				message: "Product image is required",
-			});
-		}
+		// if (!images) {
+		// 	return res.status(400).json({
+		// 		success: false,
+		// 		message: "Product image is required",
+		// 	});
+		// }
 
 		// Handle both array or single file
-		const imageFile = Array.isArray(images) ? images[0] : images;
+		// const imageFile = Array.isArray(images) ? images[0] : images;
 
 		// Ensure upload directory exists
-		const uploadPath = path.join(__dirname, "../../public");
-		if (!fs.existsSync(uploadPath)) {
-			fs.mkdirSync(uploadPath, { recursive: true });
-		}
+		// const uploadPath = path.join(__dirname, "../../public");
+		// if (!fs.existsSync(uploadPath)) {
+		// 	fs.mkdirSync(uploadPath, { recursive: true });
+		// }
 
 		// Build unique file name
-		const currentDate = new Date()
-			.toISOString()
-			.replace(/[-:]/g, "")
-			.split(".")[0];
-		const uniqueFileName = `${currentDate}_${imageFile.originalFilename}`;
-		const savedFilePath = path.join(uploadPath, uniqueFileName);
+		// const currentDate = new Date()
+		// 	.toISOString()
+		// 	.replace(/[-:]/g, "")
+		// 	.split(".")[0];
+		// const uniqueFileName = `${currentDate}_${imageFile.originalFilename}`;
+		// const savedFilePath = path.join(uploadPath, uniqueFileName);
 		// console.log(savedFilePath);
 
 		// Move file to permanent location
-		fs.renameSync(imageFile.path, savedFilePath);
+		// fs.renameSync(imageFile.path, savedFilePath);
 
 		// Build image URL for saving in DB
-		const baseUrl = `${req.protocol}://${req.get("host")}`;
-		const imageUrl = `${baseUrl}/${uniqueFileName}`;
+		// const baseUrl = `${req.protocol}://${req.get("host")}`;
+		// const imageUrl = `${baseUrl}/${uniqueFileName}`;
 
 		// Save grocery item to DB
 		const groceryItem = new GroceryItem({
@@ -55,7 +57,8 @@ export const addGroceryItemController = async (req, res) => {
 			price,
 			description,
 			discount,
-			image: imageUrl,
+			image: `imageUrl`,
+			createdBy,
 		});
 
 		const groceryAdded = await groceryItem.save();

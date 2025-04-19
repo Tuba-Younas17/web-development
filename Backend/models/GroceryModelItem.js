@@ -10,5 +10,10 @@ const groceryItemSchema = new Schema({
 	image: {
 		type: String, // URL of the uploaded image
 	},
+	createdBy: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User", // Reference to the User model
+		// required: true,
+	},
 });
 export const GroceryItem = mongoose.model("GroceryItem", groceryItemSchema);

@@ -9,12 +9,14 @@ import { addGroceryItemController } from "../../../controllers/v1Controllers/adm
 import { validGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
 import { validateGroceryRequest } from "../../../middlewares/reqMiddleware/groceryRefMiddleware.js";
 import { multipartyMiddleware } from "../../../middlewares/fileUploadMiddlewares/fileUploadMiddlewareforGrocery.js";
+import { authenticateUser } from "../../../middlewares/authMiddlewares/authenticateUser.js";
 
 export const adminRouter = express.Router();
 
 adminRouter.post("/add-grocery-items",
-    // validGroceryRequest,
-    // validateGroceryRequest,
+    // isLoggedIn,
+    // isAdmin,
+    authenticateUser,
     multipartyMiddleware,
     addGroceryItemController);
 adminRouter.get("/products", getProductsController);
