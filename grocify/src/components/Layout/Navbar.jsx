@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toggleDarkMode } from "../../reduxToolkit/features/counter/darkModeSlice";
 
 const Navbar = () => {
+	const dispatch = useDispatch();
 	const count = useSelector((state) => state.counter.value);
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const navigate = useNavigate();
@@ -20,6 +22,11 @@ const Navbar = () => {
 		setIsAuthenticated(false);
 		navigate("/auth/login"); // Redirect to login page after logout
 	};
+	const isDarkMode = useSelector((state) => state.darkMode.darkMode);
+
+	const handleToggle = () => {
+		dispatch(toggleDarkMode());
+	};
 
 	return (
 		<nav className="flex items-center justify-between bg-gray-900 text-gray-200 py-4 px-6">
@@ -32,6 +39,12 @@ const Navbar = () => {
 
 			{/* Navigation Links */}
 			<ul className="flex-1 text-center">
+				<button
+					onClick={handleToggle}
+					className="p-2 rounded-full bg-gray-300 dark:bg-gray-700"
+				>
+					{isDarkMode ? "🌙" : "☀️"}
+				</button>
 				<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 					<Link
 						to="/"
@@ -80,22 +93,22 @@ const Navbar = () => {
 						Tracking
 					</Link>
 				</li>
-				<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
+				{/* <li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 					<Link
 						to="/dictionary"
 						className="no-underline hover:text-yellow-400 px-2"
 					>
 						Dictionary
 					</Link>
-				</li>
-				<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
+				</li> */}
+				{/* <li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 					<Link
 						to="/weather"
 						className="no-underline hover:text-yellow-400 px-2"
 					>
 						Weather Prediction
 					</Link>
-				</li>
+				</li> */}
 				<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 					<Link
 						to="/add-grocery"
@@ -112,14 +125,14 @@ const Navbar = () => {
 						Grocery List
 					</Link>
 				</li>
-				<li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
+				{/* <li className="list-none inline-block px-5 hover:scale-110 active:scale-125 transition-transform duration-200">
 					<Link
 						to="/game"
 						className="no-underline hover:text-yellow-400 px-2"
 					>
 						Game
 					</Link>
-				</li>
+				</li> */}
 			</ul>
 
 			{/* Cart and Authentication Section */}
