@@ -184,7 +184,7 @@ const Signup = () => {
 								config={{
 									simpleUpload: {
 										uploadUrl:
-											"http://localhost:5000/api/v1/uploadImage/upload-image",
+											"http://localhost:5000/uploads/uploadImage/upload-image",
 									},
 								}}
 								onChange={(event, editor) => {
