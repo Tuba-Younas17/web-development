@@ -29,7 +29,7 @@ const Navbar = () => {
 							Dashboard
 						</p>
 					</Link>
-					<Link href="/auth">
+					<Link href="/auth/login">
 						<p className="text-gray-700 hover:text-indigo-500">
 							Login
 						</p>
