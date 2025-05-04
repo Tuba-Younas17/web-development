@@ -27,7 +27,7 @@ const EnrolledStudents = () => {
 	const deleteUser = async (id) => {
 		if (confirm("Are you sure you want to delete this user?")) {
 			try {
-				await axios.delete(`/api/users/${id}`);
+				await axios.delete(`/api/auth/${id}`);
 				toast.success("User deleted successfully");
 				fetchUsers(); // Refresh the list
 			} catch (error) {

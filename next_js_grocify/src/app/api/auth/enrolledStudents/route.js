@@ -1,13 +1,9 @@
-
-
 import connectDB from "@/libs/mongoDb";
 import User from "@/models/User";
 
 export async function GET(req) {
 	try {
 		await connectDB();
-
-		// Only fetch non-sensitive fields
 		const users = await User.find({}, "name age courses");
 
 		return Response.json(users, { status: 200 });
