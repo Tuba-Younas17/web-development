@@ -2,6 +2,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const RegisterForm = () => {
 	const formik = useFormik({
@@ -19,9 +20,15 @@ const RegisterForm = () => {
 				.min(6, "At least 6 characters")
 				.required("Password is required"),
 		}),
-		onSubmit: (values) => {
-			console.log("Registration Data:", values);
-			// Add registration API logic here
+
+		onSubmit: async (values, { resetForm }) => {
+			try {
+				const { data } = await axios.post("/api/register", values); // ✅ axios auto sets headers
+				alert(data.message);
+				resetForm();
+			} catch (err) {
+				alert(err.response?.data?.error || "Something went wrong");
+			}
 		},
 	});
 
