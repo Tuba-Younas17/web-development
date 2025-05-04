@@ -1,6 +1,6 @@
 import connectDB from "@/libs/mongoDb";
 import User from "@/models/User";
-
+import bcrypt from "bcryptjs"; // Make sure to install bcryptjs
 
 export async function POST(req) {
 	try {
@@ -21,7 +21,15 @@ export async function POST(req) {
 			);
 		}
 
-		const newUser = await User.create({ name, email, password });
+		// Hash the password
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(password, salt);
+
+		const newUser = await User.create({
+			name,
+			email,
+			password: hashedPassword,
+		});
 
 		return Response.json(
 			{ message: "Registered successfully", user: newUser },
