@@ -1,5 +1,3 @@
-// api/auth/register/route.js
-
 import connectDB from "@/libs/mongoDb";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";

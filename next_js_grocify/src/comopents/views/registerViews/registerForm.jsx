@@ -5,12 +5,13 @@ import * as Yup from "yup";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { courseOptions } from "@/constants/courseOptions";
 
-const courseOptions = [
-	{ value: "Web Development", label: "Web Development" },
-	{ value: "Database", label: "Database" },
-	{ value: "Web Mobile", label: "Web Mobile" },
-];
+// const courseOptions = [
+// 	{ value: "Web Development", label: "Web Development" },
+// 	{ value: "Database", label: "Database" },
+// 	{ value: "Web Mobile", label: "Web Mobile" },
+// ];
 
 const RegisterForm = () => {
 	const formik = useFormik({
