@@ -1,6 +1,7 @@
 import connectDB from "@/libs/mongoDb";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers"; // ✅ import cookies API
 
 export async function POST(req) {
 	try {
@@ -34,6 +35,13 @@ export async function POST(req) {
 				{ status: 401 }
 			);
 		}
+
+		// ✅ Set auth cookie
+		cookies().set("userEmail", email, {
+			httpOnly: true,
+			path: "/",
+			maxAge: 60 * 60 * 24, // 1 day
+		});
 
 		return Response.json(
 			{
