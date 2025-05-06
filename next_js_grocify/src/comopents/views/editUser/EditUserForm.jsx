@@ -17,7 +17,10 @@ const EditUserForm = ({ id }) => {
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const response = await axios.get(`/api/auth/${id}`);
+				const token = localStorage.getItem("token");
+				const response = await axios.get(`/api/auth/${id}`, {
+					headers: { Authorization: `Bearer ${token}` },
+				});
 				setInitialValues({
 					name: response.data.name,
 					age: response.data.age,
@@ -28,6 +31,7 @@ const EditUserForm = ({ id }) => {
 				toast.error("Failed to fetch user data");
 			}
 		};
+
 		fetchUser();
 	}, [id]);
 
@@ -51,7 +55,10 @@ const EditUserForm = ({ id }) => {
 		validationSchema,
 		onSubmit: async (values) => {
 			try {
-				await axios.put(`/api/auth/${id}`, values);
+				const token = localStorage.getItem("token");
+				await axios.put(`/api/auth/${id}`, values, {
+					headers: { Authorization: `Bearer ${token}` },
+				});
 				toast.success("Student data updated successfully");
 				setTimeout(() => router.push("/enrolledStudents"), 2000);
 			} catch (err) {

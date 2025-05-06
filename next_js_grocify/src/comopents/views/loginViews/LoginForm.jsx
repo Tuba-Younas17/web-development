@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import { useFormik } from "formik";
@@ -27,10 +26,16 @@ const LoginForm = () => {
 		onSubmit: async (values) => {
 			try {
 				const { data } = await axios.post("/api/auth/login", values);
+
+				// ✅ Save token to localStorage
+				if (data.token) {
+					localStorage.setItem("token", data.token);
+				}
+
 				toast.success(data.message);
 				setTimeout(() => {
 					router.push("/");
-				}, 2000); // Redirect after 2 seconds
+				}, 2000);
 			} catch (err) {
 				const errorData = err.response?.data;
 				if (err.response?.status === 404 && errorData?.redirectTo) {
@@ -104,7 +109,6 @@ const LoginForm = () => {
 				</button>
 			</form>
 
-			{/* Toast Container */}
 			<ToastContainer
 				position="top-right"
 				autoClose={3000}

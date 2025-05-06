@@ -1,18 +1,28 @@
 import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
-export function middleware(request) {
-	const token = request.cookies.get("userEmail")?.value;
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
-	// If user is authenticated, allow access
-	if (token) {
+export async function middleware(request) {
+	try {
+		// ✅ Get token from cookie
+		const token = request.cookies.get("token")?.value;
+
+		if (!token) {
+			throw new Error("No token provided");
+		}
+
+		// ✅ Verify token
+		await jwtVerify(token, secret);
+
+		// ✅ Token is valid
 		return NextResponse.next();
+	} catch (err) {
+		// ❌ Token invalid or missing, redirect
+		return NextResponse.redirect(new URL("/auth/login", request.url));
 	}
-
-	// If not authenticated, redirect to login
-	return NextResponse.redirect(new URL("/auth/login", request.url));
 }
 
-// Only run middleware on protected routes
 export const config = {
 	matcher: [
 		"/about/:path*",

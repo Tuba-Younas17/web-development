@@ -3,18 +3,18 @@ import React from "react";
 
 const CoursesPage = async () => {
   // api result => from server, store it in a variable, and we can directly display it in server component without using state.
-  const response = await axios.get(`https://fakestoreapi.com/products/1`);
-  const data = response.data;
-  console.log(data); // Check the data structure in the console
+  // const response = await axios.get(`https://fakestoreapi.com/products/1`);
+  // const data = response.data;
+  // console.log(data); // Check the data structure in the console
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-6 py-12">
       <h1 className="text-4xl font-bold text-indigo-600 mb-8">Our Courses
-		{data.price}
+		{/* {data.price} */}
 	  </h1>
       <p className="text-lg text-gray-700 mb-8 text-center max-w-2xl">
         Browse through our collection of courses designed to help you master the
         skills you need to succeed.
-		{data.title}
+		{/* {data.title} */}
       </p>
 
       {/* Sample Course Cards */}

@@ -15,7 +15,12 @@ const UserCardList = () => {
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
-				const response = await axios.get("/api/auth/enrolledStudents");
+				const token = localStorage.getItem("token");
+				const response = await axios.get("/api/auth/enrolledStudents", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
 				setUsers(response.data);
 			} catch (error) {
 				toast.error("Failed to fetch users");
@@ -23,13 +28,19 @@ const UserCardList = () => {
 				setLoading(false);
 			}
 		};
+
 		fetchUsers();
 	}, []);
 
 	const deleteUser = async (id) => {
 		if (confirm("Are you sure you want to delete this user?")) {
 			try {
-				await axios.delete(`/api/auth/${id}`);
+				const token = localStorage.getItem("token");
+				await axios.delete(`/api/auth/${id}`, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
 				toast.success("Student data deleted successfully");
 				setUsers((prev) => prev.filter((user) => user._id !== id));
 			} catch (error) {
@@ -37,6 +48,7 @@ const UserCardList = () => {
 			}
 		}
 	};
+
 
 	const handleEdit = (id) => {
 		router.push(`/editUser/${id}`);
