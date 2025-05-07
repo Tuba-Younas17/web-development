@@ -25,17 +25,16 @@ const LoginForm = () => {
 		}),
 		onSubmit: async (values) => {
 			try {
-				const { data } = await axios.post("/api/auth/login", values);
-
-				// ✅ Save token to localStorage
-				if (data.token) {
-					localStorage.setItem("token", data.token);
-				}
+				const { data } = await axios.post("/api/auth/login", values, {
+					withCredentials: true, // ✅ Send/receive cookies
+				});
 
 				toast.success(data.message);
+
 				setTimeout(() => {
+					router.refresh();
 					router.push("/");
-				}, 2000);
+				}, 1000);
 			} catch (err) {
 				const errorData = err.response?.data;
 				if (err.response?.status === 404 && errorData?.redirectTo) {
@@ -53,7 +52,6 @@ const LoginForm = () => {
 	return (
 		<>
 			<form className="space-y-6" onSubmit={formik.handleSubmit}>
-				{/* Email Field */}
 				<div>
 					<label className="block text-gray-700 mb-2" htmlFor="email">
 						Email
@@ -75,7 +73,6 @@ const LoginForm = () => {
 					)}
 				</div>
 
-				{/* Password Field */}
 				<div>
 					<label
 						className="block text-gray-700 mb-2"
@@ -100,7 +97,6 @@ const LoginForm = () => {
 					)}
 				</div>
 
-				{/* Submit Button */}
 				<button
 					type="submit"
 					className="w-full bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-lg font-semibold transition-all"

@@ -15,12 +15,11 @@ const UserCardList = () => {
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
-				const token = localStorage.getItem("token");
+				// const token = localStorage.getItem("token");
 				const response = await axios.get("/api/auth/enrolledStudents", {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
+					withCredentials: true, // allows sending cookies
 				});
+
 				setUsers(response.data);
 			} catch (error) {
 				toast.error("Failed to fetch users");

@@ -6,9 +6,8 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function GET(req) {
 	try {
-		// ✅ Extract token from Authorization header
-		const authHeader = req.headers.get("authorization");
-		const token = authHeader?.split(" ")[1];
+		// ✅ Extract token from cookie
+		const token = req.cookies.get("token")?.value;
 
 		if (!token) {
 			return Response.json({ error: "Unauthorized" }, { status: 401 });
@@ -17,6 +16,7 @@ export async function GET(req) {
 		// ✅ Verify token
 		await jwtVerify(token, secret);
 
+		// ✅ Get user data
 		await connectDB();
 		const users = await User.find({}, "name age courses");
 

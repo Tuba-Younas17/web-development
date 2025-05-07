@@ -5,20 +5,20 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function middleware(request) {
 	try {
-		// ✅ Get token from cookie
+		// Get token from cookie
 		const token = request.cookies.get("token")?.value;
 
 		if (!token) {
 			throw new Error("No token provided");
 		}
 
-		// ✅ Verify token
+		//  Verify token
 		await jwtVerify(token, secret);
 
-		// ✅ Token is valid
+		//  Token is valid
 		return NextResponse.next();
 	} catch (err) {
-		// ❌ Token invalid or missing, redirect
+		// Token invalid or missing, redirect
 		return NextResponse.redirect(new URL("/auth/login", request.url));
 	}
 }

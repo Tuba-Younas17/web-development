@@ -17,9 +17,8 @@ const EditUserForm = ({ id }) => {
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const token = localStorage.getItem("token");
 				const response = await axios.get(`/api/auth/${id}`, {
-					headers: { Authorization: `Bearer ${token}` },
+					withCredentials: true, // ✅ Send cookies
 				});
 				setInitialValues({
 					name: response.data.name,
@@ -55,9 +54,8 @@ const EditUserForm = ({ id }) => {
 		validationSchema,
 		onSubmit: async (values) => {
 			try {
-				const token = localStorage.getItem("token");
 				await axios.put(`/api/auth/${id}`, values, {
-					headers: { Authorization: `Bearer ${token}` },
+					withCredentials: true, // ✅ Include cookies for auth
 				});
 				toast.success("Student data updated successfully");
 				setTimeout(() => router.push("/enrolledStudents"), 2000);
@@ -77,6 +75,7 @@ const EditUserForm = ({ id }) => {
 			</h2>
 
 			<form className="space-y-5" onSubmit={formik.handleSubmit}>
+				{/* Name */}
 				<div>
 					<label className="block text-gray-700 mb-1">Name</label>
 					<input
@@ -94,6 +93,7 @@ const EditUserForm = ({ id }) => {
 					)}
 				</div>
 
+				{/* Age */}
 				<div>
 					<label className="block text-gray-700 mb-1">Age</label>
 					<input
@@ -111,6 +111,7 @@ const EditUserForm = ({ id }) => {
 					)}
 				</div>
 
+				{/* Courses */}
 				<div>
 					<label className="block text-gray-700 mb-1">Courses</label>
 					<select

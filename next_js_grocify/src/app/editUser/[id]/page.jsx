@@ -1,4 +1,4 @@
-// File: app/editUser/[id]/page.jsx
+
 import EditUserForm from "@/comopents/views/editUser/EditUserForm";
 import React from "react";
 

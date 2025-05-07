@@ -39,7 +39,7 @@ export async function POST(req) {
 		return Response.json(
 			{
 				message:
-					"Registration successful. Please log in to access the home page.",
+					"Registration successful. Please log in to have access .",
 				user: newUser,
 			},
 			{ status: 201 }
